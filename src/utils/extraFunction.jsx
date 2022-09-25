@@ -1,9 +1,8 @@
-import { Box, Tooltip } from "@chakra-ui/react";
+import {Tooltip } from "@chakra-ui/react";
 
 export const Details = ({ icon, label }) => {
   return (
     <Tooltip
-      w={"60px"}
       display={"flex"}
       alignItems={"center"}
       justifyContent={"center"}
@@ -12,8 +11,9 @@ export const Details = ({ icon, label }) => {
       backgroundColor={"teal"}
       aria-label="A tooltip"
       label={label}
-      
+      hasArrow
       borderRadius={"5px"}
+      mt={"5px"}
     >
       <span>{icon}</span>
     </Tooltip>
