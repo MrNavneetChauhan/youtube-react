@@ -24,11 +24,14 @@ import React, { useState } from "react";
 import { SearchBar } from "./SearchBar";
 import { BiMenu, BiVideoPlus } from "react-icons/bi";
 import { BsFillMoonStarsFill, BsSearch, BsSun } from "react-icons/bs";
-import { AiOutlineBell } from "react-icons/ai";
+import { AiFillLike, AiFillPlaySquare, AiOutlineBell } from "react-icons/ai";
 import { Details } from "../../utils/extraFunction";
 import { FaMicrophoneAlt, FaMobile } from "react-icons/fa";
-import {GiMultiDirections} from "react-icons/gi"
+import { GiMultiDirections } from "react-icons/gi";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { IoLogoPlaystation } from "react-icons/io";
+import {MdSubscriptions, MdVideoLibrary, MdWatchLater} from "react-icons/md";
+import {FaHistory} from "react-icons/fa";
 export const Navbar = () => {
   const [flag, setFlag] = useState(true);
   const { colorMode, toggleColorMode } = useColorMode();
@@ -180,10 +183,10 @@ export const Navbar = () => {
         <DrawerOverlay />
         <DrawerContent padding={"20px"}>
           <DrawerHeader
-            border={"1px solid black"}
+            boxShadow={"base"}
             display={"flex"}
             alignItems={"center"}
-            justifyContent={"space-around"}
+            justifyContent={"space-between"}
           >
             <BiMenu onClick={onClose} cursor="pointer" fontSize={"25px"} />
             <Image
@@ -196,7 +199,7 @@ export const Navbar = () => {
           </DrawerHeader>
 
           <DrawerBody
-          overflow={"auto"}
+            overflow={"auto"}
             m={0}
             p={0}
             display={"flex"}
@@ -209,6 +212,7 @@ export const Navbar = () => {
               gap={"10px"}
               cursor={"pointer"}
               _hover={{ background: "#e7e0e0" }}
+              mt={"8px"}
             >
               <BiMenu fontSize={"21px"} />
               <Text>Home</Text>
@@ -222,7 +226,7 @@ export const Navbar = () => {
               _hover={{ background: "#e7e0e0" }}
             >
               <GiMultiDirections fontSize={"21px"} />
-              <Text>Home</Text>
+              <Text>Explore</Text>
             </HStack>
 
             <HStack
@@ -232,8 +236,8 @@ export const Navbar = () => {
               cursor={"pointer"}
               _hover={{ background: "#e7e0e0" }}
             >
-              <BiMenu fontSize={"21px"} />
-              <Text>Home</Text>
+              <IoLogoPlaystation fontSize={"21px"} />
+              <Text>Shorts</Text>
             </HStack>
 
             <HStack
@@ -243,8 +247,8 @@ export const Navbar = () => {
               cursor={"pointer"}
               _hover={{ background: "#e7e0e0" }}
             >
-              <BiMenu fontSize={"21px"} />
-              <Text>Home</Text>
+              <MdSubscriptions fontSize={"21px"} />
+              <Text>Subscriptions</Text>
             </HStack>
             <Divider />
             <HStack
@@ -254,8 +258,8 @@ export const Navbar = () => {
               cursor={"pointer"}
               _hover={{ background: "#e7e0e0" }}
             >
-              <BiMenu fontSize={"21px"} />
-              <Text>Home</Text>
+              <MdVideoLibrary fontSize={"21px"} />
+              <Text>Library</Text>
             </HStack>
 
             <HStack
@@ -265,8 +269,8 @@ export const Navbar = () => {
               cursor={"pointer"}
               _hover={{ background: "#e7e0e0" }}
             >
-              <BiMenu fontSize={"21px"} />
-              <Text>Home</Text>
+              <FaHistory fontSize={"21px"} />
+              <Text>History</Text>
             </HStack>
 
             <HStack
@@ -276,8 +280,8 @@ export const Navbar = () => {
               cursor={"pointer"}
               _hover={{ background: "#e7e0e0" }}
             >
-              <BiMenu fontSize={"21px"} />
-              <Text>Home</Text>
+              <AiFillPlaySquare fontSize={"21px"} />
+              <Text>Your Videos</Text>
             </HStack>
 
             <HStack
@@ -287,16 +291,50 @@ export const Navbar = () => {
               cursor={"pointer"}
               _hover={{ background: "#e7e0e0" }}
             >
-              <BiMenu fontSize={"21px"} />
-              <Text>Home</Text>
+              <MdWatchLater fontSize={"21px"} />
+              <Text>Watch Later</Text>
             </HStack>
+
+            <HStack
+              p={"8px 30px 8px 30px"}
+              w={"100%"}
+              gap={"10px"}
+              cursor={"pointer"}
+              _hover={{ background: "#e7e0e0" }}
+            >
+              <AiFillLike fontSize={"21px"} />
+              <Text>Liked Videos</Text>
+            </HStack>
+
+              <Divider/>
+              <Flex direction={"column"} gap={"5px"}>
+              <Flex w={"100%"} justifyContent={"left"} flexWrap={"wrap"}>
+                <Text>About</Text>
+                <Text>Press</Text>
+                <Text>Copyright</Text>
+              </Flex>
+
+              <Flex   w={"100%"} justifyContent={"left"} flexWrap={"wrap"}>
+                <Text>Contact us</Text>
+                <Text>Creator</Text>
+                <Text>Adverise</Text>
+                <Text>Developers</Text>
+              </Flex>
+
+              <Flex w={"100%"} justifyContent={"left"} flexWrap={"wrap"}>
+                <Text>Term</Text>
+                <Text>Privacy</Text>
+                <Text>Policy & Saftey</Text>
+                <Text>How Youtube Works</Text>
+                <Text>Test New Feature</Text>
+              </Flex>
+              </Flex>
+              
+
           </DrawerBody>
 
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
+          <DrawerFooter background={"teal"} color={"white"} borderRadius={"5px"} padding={"5px"} w={"100%"}  display={"flex"} justifyContent={"center"}>
+            <Text>Made With ❤️ By Navneet Chauhan</Text>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
