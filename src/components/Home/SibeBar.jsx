@@ -15,7 +15,8 @@ export const SideBar = () => {
       alignItems={"center"}
       flexDirection={"column"}
       border={`1px solid ${colorMode === "light" ? "lightgray" : "#313131"}`}
-      w={"85px"}
+      w={"90px"}
+      p={"5px"}
     >
       <Flex
         flexDirection={"column"}
@@ -25,7 +26,7 @@ export const SideBar = () => {
         mt={"10px"}
       >
         <AiFillHome />
-        <Text fontSize={"10px"}>Home</Text>
+        <Text fontSize={"14px"}>Home</Text>
       </Flex>
       <Flex
         flexDirection={"column"}
@@ -34,7 +35,7 @@ export const SideBar = () => {
         h={"50px"}
       >
         <GiMultiDirections />
-        <Text fontSize={"12px"}>Explore</Text>
+        <Text fontSize={"14px"}>Explore</Text>
       </Flex>
       <Flex
         flexDirection={"column"}
@@ -43,7 +44,7 @@ export const SideBar = () => {
         h={"50px"}
       >
         <IoLogoPlaystation />
-        <Text fontSize={"12px"}>Shorts</Text>
+        <Text fontSize={"14px"}>Shorts</Text>
       </Flex>
       <Flex
         flexDirection={"column"}
@@ -52,7 +53,7 @@ export const SideBar = () => {
         h={"50px"}
       >
         <MdSubscriptions />
-        <Text fontSize={"12px"}>Subscriptions</Text>
+        <Text fontSize={"14px"}>Subscriptions</Text>
       </Flex>
 
       <Flex
@@ -62,7 +63,7 @@ export const SideBar = () => {
         h={"50px"}
       >
         <MdVideoLibrary />
-        <Text fontSize={"12px"}>Library</Text>
+        <Text fontSize={"14px"}>Library</Text>
       </Flex>
     </Flex>
   );

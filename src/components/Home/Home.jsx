@@ -1,10 +1,11 @@
 import { Box, Flex, Show, useDisclosure } from "@chakra-ui/react";
 import { SideBar } from "./SibeBar";
 import { Display } from "./Display";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ColorContext } from "../../context/ColorContext";
 export const Home = () => {
   const {colorMode} = useContext(ColorContext);
+  const [search,setSearch] = useState("latest");
   let tags = [
     "All",
     "Gaming",
@@ -31,6 +32,7 @@ export const Home = () => {
         <Box w={"94%"}>
           <Show above="md">
             <Flex
+            
               flexWrap={"wrap"}
               alignItems={"center"}
               justifyContent={"center"}
@@ -49,6 +51,9 @@ export const Home = () => {
                     cursor={"pointer"}
                     title={item}
                     key={index}
+                    onClick={()=>{
+                      setSearch(item)
+                    }}
                   >
                     {item}
                   </Box>
@@ -57,7 +62,7 @@ export const Home = () => {
             </Flex>
           </Show>
           {/* display-section */}
-          <Display />
+          <Display search={search}/>
         </Box>
       </Flex>
     </Box>

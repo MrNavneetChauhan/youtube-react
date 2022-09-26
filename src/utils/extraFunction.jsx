@@ -22,12 +22,12 @@ export const Details = ({ icon, label }) => {
 
 export const ShortenTitle = (title) => {
   if (title && title.length > 35) {
-    return title.substring(0, 70) + "...";
+    return title.substring(0, 45) + "...";
   }
   return title;
 };
 
-export const shorteChannelName = (title) => {
+export const shortenChannelName = (title) => {
   if (title && title.length > 30) {
     return title.substring(0, 30) + "...";
   }

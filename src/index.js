@@ -10,7 +10,6 @@ import { ColorContextProvider } from "./context/ColorContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <React.StrictMode>
     <ChakraProvider>
       <ReduxProvider store={store}>
         <ColorContextProvider>
@@ -20,5 +19,4 @@ root.render(
         </ColorContextProvider>
       </ReduxProvider>
     </ChakraProvider>
-  </React.StrictMode>
 );
