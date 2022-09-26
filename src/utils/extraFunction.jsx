@@ -1,4 +1,4 @@
-import {Tooltip } from "@chakra-ui/react";
+import { Tooltip } from "@chakra-ui/react";
 
 export const Details = ({ icon, label }) => {
   return (
@@ -18,4 +18,18 @@ export const Details = ({ icon, label }) => {
       <span>{icon}</span>
     </Tooltip>
   );
+};
+
+export const ShortenTitle = (title) => {
+  if (title && title.length > 35) {
+    return title.substring(0, 70) + "...";
+  }
+  return title;
+};
+
+export const shorteChannelName = (title) => {
+  if (title && title.length > 30) {
+    return title.substring(0, 30) + "...";
+  }
+  return title;
 };

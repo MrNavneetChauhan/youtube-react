@@ -1,17 +1,20 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, useDisclosure } from "@chakra-ui/react";
 import { AiFillHome } from "react-icons/ai";
 import { Text } from "@chakra-ui/react";
 import { GiMultiDirections } from "react-icons/gi";
 import { IoLogoPlaystation } from "react-icons/io";
 import { MdSubscriptions, MdVideoLibrary } from "react-icons/md";
+import { useContext } from "react";
+import { ColorContext } from "../../context/ColorContext";
 export const SideBar = () => {
+  const {colorMode} = useContext(ColorContext)
   return (
     <Flex
       gap={"20px"}
-      justifyContent={"center"}
+      // justifyContent={"center"}
       alignItems={"center"}
       flexDirection={"column"}
-      border={"1px solid lightgray"}
+      border={`1px solid ${colorMode === "light" ? "lightgray" : "#313131"}`}
       w={"85px"}
     >
       <Flex

@@ -1,10 +1,10 @@
-import { Box, Flex, Show } from "@chakra-ui/react";
-import { AiFillHome } from "react-icons/ai";
-import { Text } from "@chakra-ui/react";
+import { Box, Flex, Show, useDisclosure } from "@chakra-ui/react";
 import { SideBar } from "./SibeBar";
 import { Display } from "./Display";
-import { Footer } from "../Footer/Footer";
+import { useContext } from "react";
+import { ColorContext } from "../../context/ColorContext";
 export const Home = () => {
+  const {colorMode} = useContext(ColorContext);
   let tags = [
     "All",
     "Gaming",
@@ -19,8 +19,6 @@ export const Home = () => {
     "Top Songs",
     "Top Movies",
   ];
-
-  
 
   return (
     <Box>
@@ -38,9 +36,9 @@ export const Home = () => {
               justifyContent={"center"}
               gap={"15px"}
               p={"10px"}
-              borderBottom={"1px solid lightgray"}
+              borderBottom={`1px solid ${colorMode === "light" ? "lightgray" : "#313131"}`}
             >
-              {tags.map((item) => {
+              {tags.map((item, index) => {
                 return (
                   <Box
                     background={"#F2F2F2"}
@@ -50,6 +48,7 @@ export const Home = () => {
                     border={"1px solid lightgray"}
                     cursor={"pointer"}
                     title={item}
+                    key={index}
                   >
                     {item}
                   </Box>
