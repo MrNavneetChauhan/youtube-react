@@ -1,10 +1,7 @@
 import {
   Avatar,
-  Box,
-  Button,
   Drawer,
   DrawerBody,
-  DrawerCloseButton,
   DrawerContent,
   DrawerFooter,
   DrawerHeader,
@@ -308,20 +305,20 @@ export const Navbar = () => {
 
               <Divider/>
               <Flex direction={"column"} gap={"5px"}>
-              <Flex w={"100%"} justifyContent={"left"} flexWrap={"wrap"}>
+              <Flex gap={"8px"} w={"100%"} justifyContent={"left"} flexWrap={"wrap"}>
                 <Text>About</Text>
                 <Text>Press</Text>
                 <Text>Copyright</Text>
               </Flex>
 
-              <Flex   w={"100%"} justifyContent={"left"} flexWrap={"wrap"}>
+              <Flex  gap={"8px"}  w={"100%"} justifyContent={"left"} flexWrap={"wrap"}>
                 <Text>Contact us</Text>
                 <Text>Creator</Text>
                 <Text>Adverise</Text>
                 <Text>Developers</Text>
               </Flex>
 
-              <Flex w={"100%"} justifyContent={"left"} flexWrap={"wrap"}>
+              <Flex gap={"8px"} w={"100%"} justifyContent={"left"} flexWrap={"wrap"}>
                 <Text>Term</Text>
                 <Text>Privacy</Text>
                 <Text>Policy & Saftey</Text>
@@ -333,8 +330,8 @@ export const Navbar = () => {
 
           </DrawerBody>
 
-          <DrawerFooter background={"teal"} color={"white"} borderRadius={"5px"} padding={"5px"} w={"100%"}  display={"flex"} justifyContent={"center"}>
-            <Text>Made With ❤️ By Navneet Chauhan</Text>
+          <DrawerFooter background={"teal"} color={"white"} borderRadius={"5px"} p={0} w={"80%"}  display={"flex"} justifyContent={"center"}>
+            <Text>Made With ❤️ By Navneet</Text>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

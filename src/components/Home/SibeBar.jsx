@@ -1,4 +1,4 @@
-import { Flex, useDisclosure } from "@chakra-ui/react";
+import { Flex} from "@chakra-ui/react";
 import { AiFillHome } from "react-icons/ai";
 import { Text } from "@chakra-ui/react";
 import { GiMultiDirections } from "react-icons/gi";

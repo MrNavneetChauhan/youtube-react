@@ -21,8 +21,8 @@ export const Details = ({ icon, label }) => {
 };
 
 export const ShortenTitle = (title) => {
-  if (title && title.length > 50) {
-    return title.substring(0, 75) + "...";
+  if (title && title.length > 30) {
+    return title.substring(0, 45) + "...";
   }
   return title;
 };

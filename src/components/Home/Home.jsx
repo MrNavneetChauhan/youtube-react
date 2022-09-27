@@ -1,25 +1,54 @@
-import { Box, Flex, Show, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, Show ,Image} from "@chakra-ui/react";
 import { SideBar } from "./SibeBar";
 import { Display } from "./Display";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ColorContext } from "../../context/ColorContext";
+import { useDispatch, useSelector } from "react-redux";
+import { gettingVideosData, searchedVideos } from "../../redux/vidoes/action";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 export const Home = () => {
-  const {colorMode} = useContext(ColorContext);
-  const [search,setSearch] = useState("latest");
+  const { colorMode } = useContext(ColorContext);
+  const [search, setSearch] = useState("All");
+  const dispatch = useDispatch();
+  const { video_data, searchParam } = useSelector(
+    (store) => store.videosReducer
+  );
+  useEffect(() => {
+    dispatch(gettingVideosData());
+  }, []);
+
   let tags = [
     "All",
     "Gaming",
-    "Music",
+    "React Native",
     "JavaScript",
     "Python",
     "T-Series",
     "Gym",
     "Motivation",
-    "Programmers",
-    "Best Project",
+    "Coding",
     "Top Songs",
     "Top Movies",
+    "lol",
   ];
+
+  const handleTags = (item)=>{
+    setSearch(item);
+    if(item == "All"){
+      dispatch(gettingVideosData())
+    }else{
+      dispatch(searchedVideos(item))
+    }
+  }
+
+  const fetchData = () => {
+    if (searchParam === "All") {
+      dispatch(gettingVideosData());
+    } else {
+      dispatch(searchedVideos(searchParam));
+    }
+  };
 
   return (
     <Box>
@@ -32,28 +61,27 @@ export const Home = () => {
         <Box w={"94%"}>
           <Show above="md">
             <Flex
-            
               flexWrap={"wrap"}
               alignItems={"center"}
-              justifyContent={"center"}
+              justifyContent={"flex_start"}
               gap={"15px"}
-              p={"10px"}
-              borderBottom={`1px solid ${colorMode === "light" ? "lightgray" : "#313131"}`}
+              p={"8px"}
+              borderBottom={`1px solid ${
+                colorMode === "light" ? "lightgray" : "#313131"
+              }`}
             >
               {tags.map((item, index) => {
                 return (
                   <Box
                     background={"#F2F2F2"}
                     color={"black"}
-                    padding={"2px 10px 2px 10px"}
+                    padding={"1px 10px 1px 10px"}
                     borderRadius={"35px"}
                     border={"1px solid lightgray"}
                     cursor={"pointer"}
                     title={item}
                     key={index}
-                    onClick={()=>{
-                      setSearch(item)
-                    }}
+                    onClick={()=>handleTags(item)}
                   >
                     {item}
                   </Box>
@@ -62,7 +90,27 @@ export const Home = () => {
             </Flex>
           </Show>
           {/* display-section */}
-          <Display search={search}/>
+          <Box mt={"10px"} w={"100%"}>
+            <InfiniteScroll
+              style={{
+                width: "100%",
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: "20px",
+              }}
+              dataLength={video_data.length}
+              next={fetchData}
+              hasMore={true}
+              loader={
+                <Image mb={"20px"} src="https://cdn.dribbble.com/users/563824/screenshots/3633228/untitled-5.gif"/>
+              }
+            >
+              {video_data.map((item) => {
+                return <Display {...item} />;
+              })}
+            </InfiniteScroll>
+          </Box>
         </Box>
       </Flex>
     </Box>
