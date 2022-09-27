@@ -29,12 +29,12 @@ export const getVideosError = () => {
 
 
 
-// var key =  "AIzaSyBvt7iWnHLeRYtik2Vyb0Eqc8D1Zs44XxA"
-var key =  "AIzaSyD41hkSAxKHA9hdnkguwHgdIdYsqwn7m9k"
+// var key =  "AIzaSyDxLeAHaW7iAPosvEHn4UqzWIdCNb29dMU"
+// var key =  "AIzaSyD41hkSAxKHA9hdnkguwHgdIdYsqwn7m9k"
 
-export const gettingVideosData = () => (dispatch,getState) => {
+export const gettingVideosData = () => async(dispatch,getState) => {
   dispatch(getVideosLoading());
-  axios
+await  axios
     .get(`/videos`,{
       params:{
         part:"snippet,contentDetails,statistics",
@@ -54,8 +54,8 @@ export const gettingVideosData = () => (dispatch,getState) => {
 };
 
 
-export const searchedVideos = (search) => (dispatch,getState) => {
-  dispatch(getVideosLoading());
+export const searchedVideos = (search) => async(dispatch,getState) => {
+await dispatch(getVideosLoading());
   axios
     .get(`/search`,{
       params:{

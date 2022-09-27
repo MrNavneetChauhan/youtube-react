@@ -8,16 +8,20 @@ import { Provider as ReduxProvider } from "react-redux";
 import { store } from "./redux/store";
 import { ColorContextProvider } from "./context/ColorContext";
 import axios from "axios";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-axios.defaults.baseURL="https://youtube.googleapis.com/youtube/v3"
+axios.defaults.baseURL = "https://youtube.googleapis.com/youtube/v3";
 root.render(
-    <ChakraProvider>
-      <ReduxProvider store={store}>
+  <ChakraProvider>
+    <ReduxProvider store={store}>
+      <BrowserRouter>
         <ColorContextProvider>
           <SearchContextProvider>
             <App />
           </SearchContextProvider>
         </ColorContextProvider>
-      </ReduxProvider>
-    </ChakraProvider>
+      </BrowserRouter>
+    </ReduxProvider>
+  </ChakraProvider>
 );

@@ -1,4 +1,4 @@
-import { Box, Flex, Show ,Image} from "@chakra-ui/react";
+import { Box, Flex, Show, Image, Skeleton } from "@chakra-ui/react";
 import { SideBar } from "./SibeBar";
 import { Display } from "./Display";
 import { useContext, useEffect, useState } from "react";
@@ -11,7 +11,7 @@ export const Home = () => {
   const { colorMode } = useContext(ColorContext);
   const [search, setSearch] = useState("All");
   const dispatch = useDispatch();
-  const { video_data, searchParam } = useSelector(
+  const { video_data, searchParam, isLoading, isError } = useSelector(
     (store) => store.videosReducer
   );
   useEffect(() => {
@@ -33,14 +33,14 @@ export const Home = () => {
     "lol",
   ];
 
-  const handleTags = (item)=>{
+  const handleTags = (item) => {
     setSearch(item);
-    if(item == "All"){
-      dispatch(gettingVideosData())
-    }else{
-      dispatch(searchedVideos(item))
+    if (item == "All") {
+      dispatch(gettingVideosData());
+    } else {
+      dispatch(searchedVideos(item));
     }
-  }
+  };
 
   const fetchData = () => {
     if (searchParam === "All") {
@@ -81,7 +81,7 @@ export const Home = () => {
                     cursor={"pointer"}
                     title={item}
                     key={index}
-                    onClick={()=>handleTags(item)}
+                    onClick={() => handleTags(item)}
                   >
                     {item}
                   </Box>
@@ -102,12 +102,10 @@ export const Home = () => {
               dataLength={video_data.length}
               next={fetchData}
               hasMore={true}
-              loader={
-                <Image mb={"20px"} src="https://cdn.dribbble.com/users/563824/screenshots/3633228/untitled-5.gif"/>
-              }
+              loader={<Skeleton background={"black"} />}
             >
-              {video_data.map((item) => {
-                return <Display {...item} />;
+              {video_data.map((item,index) => {
+                return <Display key={index} {...item} />;
               })}
             </InfiniteScroll>
           </Box>

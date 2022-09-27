@@ -1,12 +1,12 @@
 import { Box } from "@chakra-ui/react";
 import { Footer } from "./components/Footer/Footer";
-import { Home } from "./components/Home/Home";
 import { Navbar } from "./components/Navbar/Navbar";
+import { Routers } from "./routes/Routers";
 function App() {
   return (
     <Box>
       <Navbar />
-      <Home/>
+      <Routers/>
       <Footer/>
     </Box>
   );

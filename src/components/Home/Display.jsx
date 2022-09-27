@@ -5,6 +5,8 @@ import moment from "moment";
 import numeral from "numeral";
 import { useEffect, useState } from "react";
 import { shortenChannelName, ShortenTitle } from "../../utils/extraFunction";
+import {LazyLoadImage} from "react-lazy-load-image-component"
+import { Link } from "react-router-dom";
 export const Display = (item) => {
   const [view, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
@@ -27,7 +29,7 @@ export const Display = (item) => {
 
   const videoId = id?.videoId || id;
 
-  var key = "AIzaSyBvt7iWnHLeRYtik2Vyb0Eqc8D1Zs44XxA";
+  var key = "AIzaSyDxLeAHaW7iAPosvEHn4UqzWIdCNb29dMU";
   useEffect(() => {
     axios
       .get("/videos", {
@@ -65,8 +67,8 @@ export const Display = (item) => {
       cursor={"pointer"}
       width={["80%", "300px", "250px"]}
     >
-      <Box position={"relative"} h={"60%"} w={"100%"}>
-        <Image h={"100%"} w={"100%"} objectFit={"cover"} src={url} />
+      <Link style={{position:"relative",height:"60%",width:"100%",textDecoration:"none"}} to={`play_video/${videoId}`}>
+        <LazyLoadImage effect="blur" h={"100%"} w={"100%"}  src={url} />
         <Text
           right={1}
           bottom={1}
@@ -79,11 +81,10 @@ export const Display = (item) => {
         >
           {_duration}
         </Text>
-      </Box>
+      </Link>
       <Flex h={"20%"} padding={"8px"} gap={"10px"} alignItems={"start"}>
         <Box>
           <Avatar
-            mt={"2px"}
             width={"35px"}
             height={"35px"}
             src={channelIcon?.url}
