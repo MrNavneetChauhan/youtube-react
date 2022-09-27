@@ -18,7 +18,7 @@ console.log("channel",channels)
   }, [search]);
 
   useEffect(() => {
-    dispatch(gettingChannelInfo(posters,[]));
+    dispatch(gettingChannelInfo(posters,["wokri"]));
   }, [search]);
 
   return isLoading ? (
@@ -51,29 +51,36 @@ console.log("channel",channels)
             >
               <Image h={"60%"} w={"100%"} objectFit={"contain"} src={url} />
               <Flex h={"20%"} padding={"8px"} gap={"10px"} alignItems={"start"}>
+                <Box>
                 <Avatar
                   mt={"2px"}
                   width={"35px"}
                   height={"35px"}
                   src={"https://random.imagecdn.app/500/150"}
                 />
+                </Box>
+
+                <Box>
                 <Text fontWeight={"700"} fontSize={"14px"}>
-                  {ShortenTitle(item.title)}
+                  {ShortenTitle("this is the title of video and it is like this")}
                 </Text>
-              </Flex>
-              <Box pl={"50px"} h={"20%"}>
                 <Text fontSize={"13px"} color="gray">
-                  {shortenChannelName("l")}
+                  {shortenChannelName("this is the description of this video can raise upto 20 lines or upto 10 lines. Very beneficial this si s alos benefical brothers")}
                 </Text>
-                <HStack p={0}>
-                  <Text fontSize={"13px"} color="gray">
+                <Flex>
+
+                <Text fontSize={"13px"} color="gray">
                     {(Math.random() * 10).toFixed(2)}M views •
                   </Text>
                   <Text fontSize={"13px"} color="gray">
                     1 year ago
                   </Text>
-                </HStack>
-              </Box>
+                </Flex>
+                </Box>
+
+               
+              </Flex>
+              
             </Box>
           );
         })}
