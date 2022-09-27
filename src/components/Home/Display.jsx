@@ -1,16 +1,20 @@
-import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
-import { Image } from "@chakra-ui/react";
+import { Avatar, Box, Flex, Skeleton, Stack, Text } from "@chakra-ui/react";
 import axios from "axios";
 import moment from "moment";
 import numeral from "numeral";
 import { useEffect, useState } from "react";
 import { shortenChannelName, ShortenTitle } from "../../utils/extraFunction";
-import {LazyLoadImage} from "react-lazy-load-image-component"
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Loaders } from "../Loaders/Loaders";
 export const Display = (item) => {
   const [view, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
   const [channelIcon, setChannelIcon] = useState(null);
+
+  const { isLoading } = useSelector((store) => store.videosReducer);
+
   const {
     snippet: {
       thumbnails: {
@@ -29,7 +33,7 @@ export const Display = (item) => {
 
   const videoId = id?.videoId || id;
 
-  var key = "AIzaSyDxLeAHaW7iAPosvEHn4UqzWIdCNb29dMU";
+  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
   useEffect(() => {
     axios
       .get("/videos", {
@@ -67,8 +71,16 @@ export const Display = (item) => {
       cursor={"pointer"}
       width={["80%", "300px", "250px"]}
     >
-      <Link style={{position:"relative",height:"60%",width:"100%",textDecoration:"none"}} to={`play_video/${videoId}`}>
-        <LazyLoadImage effect="blur" h={"100%"} w={"100%"}  src={url} />
+      <Link
+        style={{
+          position: "relative",
+          height: "60%",
+          width: "100%",
+          textDecoration: "none",
+        }}
+        to={`play_video/${videoId}`}
+      >
+        <LazyLoadImage effect="blur" h={"100%"} w={"100%"} src={url} />
         <Text
           right={1}
           bottom={1}
@@ -84,11 +96,7 @@ export const Display = (item) => {
       </Link>
       <Flex h={"20%"} padding={"8px"} gap={"10px"} alignItems={"start"}>
         <Box>
-          <Avatar
-            width={"35px"}
-            height={"35px"}
-            src={channelIcon?.url}
-          />
+          <Avatar width={"35px"} height={"35px"} src={channelIcon?.url} />
         </Box>
 
         <Box>

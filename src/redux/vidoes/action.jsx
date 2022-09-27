@@ -11,12 +11,12 @@ export const getVideosLoading = () => {
   };
 };
 
-export const getVidoesSuccess = (payload,searchParam) => {
+export const getVidoesSuccess = (payload, searchParam) => {
   return {
     type: GET_VIDEOS_SUCCESS,
-    payload:payload.items,
-    nextPageToken:payload.nextPageToken,
-    searchParam
+    payload: payload.items,
+    nextPageToken: payload.nextPageToken,
+    searchParam,
   };
 };
 
@@ -26,50 +26,47 @@ export const getVideosError = () => {
   };
 };
 
-
-
-
-// var key =  "AIzaSyDxLeAHaW7iAPosvEHn4UqzWIdCNb29dMU"
+// var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
 // var key =  "AIzaSyD41hkSAxKHA9hdnkguwHgdIdYsqwn7m9k"
+var key = "helo"
 
-export const gettingVideosData = () => async(dispatch,getState) => {
+export const gettingVideosData = () => async (dispatch, getState) => {
   dispatch(getVideosLoading());
-await  axios
-    .get(`/videos`,{
-      params:{
-        part:"snippet,contentDetails,statistics",
-        chart:"mostPopular",
-        maxResults:20,
-        pageToken:getState().videosReducer.nextPageToken,
-        key:key
-      }
+  await axios
+    .get(`/videos`, {
+      params: {
+        part: "snippet,contentDetails,statistics",
+        chart: "mostPopular",
+        maxResults: 20,
+        pageToken: getState().videosReducer.nextPageToken,
+        key: key,
+      },
     })
     .then(({ data }) => {
-      console.log("data",data,"from action")
-      dispatch(getVidoesSuccess(data,"All"));
+      console.log("data", data, "from action");
+      dispatch(getVidoesSuccess(data, "All"));
     })
     .catch((err) => {
       dispatch(getVideosError());
     });
 };
 
-
-export const searchedVideos = (search) => async(dispatch,getState) => {
-await dispatch(getVideosLoading());
+export const searchedVideos = (search) => async (dispatch, getState) => {
+  await dispatch(getVideosLoading());
   axios
-    .get(`/search`,{
-      params:{
-        part:"snippet",
-        q:search,
-        maxResults:20,
-        pageToken:getState().videosReducer.nextPageToken,
-        type:"video",
-        key:key
-      }
+    .get(`/search`, {
+      params: {
+        part: "snippet",
+        q: search,
+        maxResults: 20,
+        pageToken: getState().videosReducer.nextPageToken,
+        type: "video",
+        key: key,
+      },
     })
     .then(({ data }) => {
-      console.log("data",data,"from action")
-      dispatch(getVidoesSuccess(data,search));
+      console.log("data", data, "from action");
+      dispatch(getVidoesSuccess(data, search));
     })
     .catch((err) => {
       dispatch(getVideosError());

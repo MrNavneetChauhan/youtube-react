@@ -1,4 +1,4 @@
-import { color, Flex, Grid, Input } from "@chakra-ui/react";
+import { Flex, Grid, Input } from "@chakra-ui/react";
 import React from "react";
 import { useContext } from "react";
 import { FaSearchDollar } from "react-icons/fa";
