@@ -27,6 +27,8 @@ export const SearchBar = ({ colorMode }) => {
     dispatch(gettingSearchData(throttle));
   }, [throttle]);
 
+
+
   return (
     <>
       <Flex ml={"10px"} h={"100%"} alignItems={"center"} w={"50%"}>
@@ -52,7 +54,6 @@ export const SearchBar = ({ colorMode }) => {
           }}
           onBlur={() => {
             showSearchIcon(false);
-            setShow(false);
           }}
           onChange={handleSearch}
           cursor={"pointer"}
@@ -104,14 +105,19 @@ export const SearchBar = ({ colorMode }) => {
             background="white"
             w={"40%"}
             top={"50"}
+            
           >
             {" "}
             {searchData.map((item, index) => {
+              const id = item?.id?.videoId || item.id
               return (
                 <Link
                   className="search_link"
-                  to={`search/${item.snippet.title}`}
+                  to={`search/${id}`}
                   key={index}
+                  onClick={()=>{
+                    setShow(false)
+                  }}
                 >
                   {item.snippet.title}
                 </Link>
