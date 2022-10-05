@@ -26,16 +26,18 @@ export const videoDetailsFailure = (payload) => {
   };
 };
 
-export const extraDetails = (payload)=>{
+export const extraDetails = (payload) => {
   return {
-    type:EXTRA_TYPES_DETAILS,
-    payload
-  }
-}
+    type: EXTRA_TYPES_DETAILS,
+    payload,
+  };
+};
 
 export const getSpecificVideoDetails = (id) => (dispatch) => {
   let c_id = getFromLocalStorage("c_id");
-  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  // var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM";
+  var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
   // var key = "helo"
   try {
     dispatch(videoDetailsLoading());
@@ -44,35 +46,34 @@ export const getSpecificVideoDetails = (id) => (dispatch) => {
         `https://youtube.googleapis.com/youtube/v3/channels?part=statistics&part=snippet&part=contentDetails&part=localizations&id=${c_id}&pageToken=nextPageToken&key=${key}`
       )
       .then(({ data }) => {
-       dispatch(videoDetailsSuccess(data.items[0]))
+        dispatch(videoDetailsSuccess(data.items[0]));
       });
 
-      axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=statistics&part=snippet&part=contentDetails&id=${id}&key=${key}`).then(({data})=>{
-        dispatch(extraDetails(data.items[0]))
-      })
-
+    axios
+      .get(
+        `https://youtube.googleapis.com/youtube/v3/videos?part=statistics&part=snippet&part=contentDetails&id=${id}&key=${key}`
+      )
+      .then(({ data }) => {
+        dispatch(extraDetails(data.items[0]));
+      });
   } catch (err) {
     dispatch(videoDetailsFailure());
   }
 };
 
-export const verifySubscription = ()=>async(dispatch,getState)=>{
+export const verifySubscription = () => async (dispatch, getState) => {
   let c_id = getFromLocalStorage("c_id");
-  try{
+  try {
     axios({
-      url:"https://www.googleapis.com/youtube/v3/subscriptions",
-      params:{
-        part:"snippet",
-        forChannelId:c_id,
-        mine:true
+      url: "https://www.googleapis.com/youtube/v3/subscriptions",
+      params: {
+        part: "snippet",
+        forChannelId: c_id,
+        mine: true,
       },
-      headers:{
-        Authorization:`Bearer ${getState().auth.accessToken}`
-      }
-    })
-  }catch(err){
-
-  }
-}
-
-
+      headers: {
+        Authorization: `Bearer ${getState().auth.accessToken}`,
+      },
+    });
+  } catch (err) {}
+};

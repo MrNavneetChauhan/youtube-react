@@ -22,11 +22,12 @@ export const RightSection = ({ item }) => {
   const [view, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
   const videoId = id?.videoId || id;
-  const navigate = useNavigate();
   const seconds = moment.duration(duration).asSeconds();
   const _durations = moment.utc(seconds * 1000).format("mm:ss");
 
-  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  // var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM"
+  var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
   useEffect(() => {
     axios
       .get("/videos", {

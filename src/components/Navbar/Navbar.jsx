@@ -16,6 +16,7 @@ import {
   useColorMode,
   useDisclosure,
   Divider,
+  Box,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { SearchBar } from "./SearchBar";
@@ -29,11 +30,16 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { IoLogoPlaystation } from "react-icons/io";
 import {MdSubscriptions, MdVideoLibrary, MdWatchLater} from "react-icons/md";
 import {FaHistory} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useThrottle } from "../../hooks/useThrottle";
 export const Navbar = () => {
   const [flag, setFlag] = useState(true);
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const handleSearch = (e)=>{
+    console.log(e.target.value)
+  }
   return (
     <Flex
       justifyContent={"space-between"}
@@ -63,7 +69,7 @@ export const Navbar = () => {
                 fontSize={"25px"}
               />
             </Show>
-            <Flex w={"110px"} alignItems={"center"}>
+            <Link className="link" to="/" >
               <Image
                 title="YouTube Home"
                 color={"black"}
@@ -78,7 +84,7 @@ export const Navbar = () => {
                 borderRadius={"5px"}
               />
               <sup style={{ marginLeft: "3px" }}>IN</sup>
-            </Flex>
+            </Link>
           </Flex>
           <Show above="md">
             <SearchBar colorMode={colorMode} />
@@ -156,6 +162,7 @@ export const Navbar = () => {
             fontSize={"18px"}
             borderRadius={"none"}
             placeholder="Search YouTube"
+            onChange={handleSearch}
           />
           <Grid
             border={"1px solid #313131"}

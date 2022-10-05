@@ -26,10 +26,12 @@ export const getRelatedVideosFailure = () => {
 };
 
 export const gettingRelatedContent = (id) => (dispatch) => {
-  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  // var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM";
+  var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
   try {
     dispatch(getRelatedVideosLoading());
-    axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&relatedToVideoId=cTDJNZ9cK1w&key=${key}`).then(({data})=>{
+    axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&relatedToVideoId=${id}&key=${key}`).then(({data})=>{
       dispatch(getRelatedVideosSuccess(data.items))
     });
   } catch (err) {

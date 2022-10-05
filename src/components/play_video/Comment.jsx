@@ -14,7 +14,11 @@ import { MdOutlineSort } from "react-icons/md";
 import InputEmoji from "react-input-emoji";
 import { useSelector } from "react-redux";
 import numeral from "numeral";
-export const Comment = ({ snippet, statistics,extraDetails }) => {
+export const Comment = ({ snippet, statistics, extraDetails }) => {
+  const shortDesc = extraDetails?.snippet?.description.substring(0, 299);
+  const restDesc = extraDetails?.snippet?.description.split("");
+  restDesc?.splice(0,299)
+  const [hide, setHide] = useState(true);
   return (
     <Flex flexWrap={"wrap"} gap={"10px"} flexDirection={"column"} w={"100%"}>
       <Flex alignItems={"center"} w={"100%"} justifyContent={"space-between"}>
@@ -33,8 +37,20 @@ export const Comment = ({ snippet, statistics,extraDetails }) => {
           Subscribe
         </Button>
       </Flex>
-      <Flex  w={"100%"} p={"10px"} fontSize={"14px"} m={"15px auto"}  flexWrap={"wrap"}>
-        <Text>{extraDetails?.snippet?.description}</Text>
+      <Flex
+        w={"100%"}
+        p={"10px"}
+        fontSize={"14px"}
+        m={"15px auto"}
+        flexWrap={"wrap"}
+      >
+        <Text>{shortDesc}</Text>
+        {hide ? "":<Text>{restDesc.join("")}</Text>}
+        <Button onClick={()=>{
+          setHide(!hide)
+        }} background={"none"} border="1px solid lightgray">
+          Show More
+        </Button>
       </Flex>
       <Divider />
       <Flex>

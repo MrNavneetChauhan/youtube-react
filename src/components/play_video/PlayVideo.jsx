@@ -15,9 +15,9 @@ export const PlayVideo = () => {
     useEffect(()=>{
       dispatch(getSpecificVideoDetails(id))
       dispatch(gettingRelatedContent(id))
-    },[])
+    },[id])
 
-      
+
 
 
   return (
@@ -47,7 +47,7 @@ export const PlayVideo = () => {
         <Title snippet = {snippet} statistics={statistics} extraDetails={extraDetails}/>
       </Flex>
       <Flex flexDirection={"column"} gap="15px" border={"1px solid red"} width={["100%", "100%", "35%"]}>
-        {relatedVideos.length && relatedVideos.map((item)=>{
+        {relatedVideos.map((item)=>{
           return (
             <RightSection item = {item} />
           )

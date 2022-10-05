@@ -12,6 +12,7 @@ export const Display = (item) => {
   const [view, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
   const [channelIcon, setChannelIcon] = useState(null);
+  console.log("process",process.env.REACT_APP_YT_KEY)
   const {
     snippet: {
       thumbnails: {
@@ -30,7 +31,9 @@ export const Display = (item) => {
 
   const videoId = id?.videoId || id;
 
-  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  // var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM";
+  var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc"
   useEffect(() => {
     axios
       .get("/videos", {

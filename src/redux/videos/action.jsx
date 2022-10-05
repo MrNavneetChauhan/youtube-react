@@ -26,8 +26,9 @@ export const getVideosError = () => {
   };
 };
 
-var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+// var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
 // var key =  "AIzaSyD41hkSAxKHA9hdnkguwHgdIdYsqwn7m9k"
+var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc"
 // var key = "helo"
 
 export const gettingVideosData = () => async (dispatch, getState) => {
