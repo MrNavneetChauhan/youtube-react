@@ -4,7 +4,7 @@ import { Display } from "./Display";
 import { useContext, useEffect, useState } from "react";
 import { ColorContext } from "../../context/ColorContext";
 import { useDispatch, useSelector } from "react-redux";
-import { gettingVideosData, searchedVideos } from "../../redux/vidoes/action";
+import { gettingVideosData, searchedVideos } from "../../redux/videos/action";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Loaders } from "../Loaders/Loaders";
 
@@ -15,7 +15,6 @@ export const Home = () => {
   const { video_data, searchParam, isLoading, isError } = useSelector(
     (store) => store.videosReducer
   );
-  console.log("search", search);
   useEffect(() => {
     dispatch(gettingVideosData());
   }, []);

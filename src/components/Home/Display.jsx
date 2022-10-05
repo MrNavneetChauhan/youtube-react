@@ -6,15 +6,12 @@ import { useEffect, useState } from "react";
 import { shortenChannelName, ShortenTitle } from "../../utils/extraFunction";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { Loaders } from "../Loaders/Loaders";
+import { setToLocalStorage } from "../../utils/localStorage";
 export const Display = (item) => {
   const [view, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
   const [channelIcon, setChannelIcon] = useState(null);
-
-  const { isLoading } = useSelector((store) => store.videosReducer);
-
   const {
     snippet: {
       thumbnails: {
@@ -44,7 +41,6 @@ export const Display = (item) => {
         },
       })
       .then(({ data: { items } }) => {
-        // console.log(res, "this is video details");
         setDuration(items[0]?.contentDetails?.duration);
         setViews(items[0]?.statistics?.viewCount);
       });
@@ -63,13 +59,15 @@ export const Display = (item) => {
         setChannelIcon(items[0]?.snippet?.thumbnails?.default);
       });
   }, [channelId]);
-
   return (
     <Box
       title={title}
       boxShadow={"md"}
       cursor={"pointer"}
       width={["80%", "300px", "250px"]}
+      onClick={()=>{
+        setToLocalStorage("c_id",channelId)
+      }}
     >
       <Link
         style={{

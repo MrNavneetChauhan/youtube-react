@@ -6,17 +6,18 @@ import {BiCut} from "react-icons/bi";
 import {MdReadMore} from "react-icons/md";
 import {FiMoreHorizontal} from "react-icons/fi";
 import { Comment } from "./Comment";
-export const Title = () => {
+import moment from "moment";
+export const Title = ({snippet,statistics,extraDetails}) => {
   return (
     <Flex p={"0 10px 0 10px"} gap={"10px"} flexDirection={"column"}>
       <Text fontSize={"18px"}>
-        हनुमान और रावण का हुआ आमना सामना | Sankat Mochan Mahabali Hanumaan - 401
+      {extraDetails?.snippet?.title}
       </Text>
       <Flex flexWrap={"wrap"} flexDirection={["column","row","row"]} justifyContent={"space-between"}>
-        <Flex fontSize={"14px"} color="gray">
-          <Text>7,441,546 views</Text>
-          <Text>.</Text>
-          <Text>11 Jul 2022</Text>
+        <Flex gap={"5px"} fontSize={"14px"} color="gray">
+          <Text>{extraDetails?.statistics?.viewCount} views</Text>
+          <Text>•</Text>
+          <Text>{moment(extraDetails?.snippet?.publishedAt).format('llll')}</Text>
         </Flex>
         <Flex flexWrap={"wrap"} gap={["10px","15px","25px"]} alignItems={"center"}>
           <Flex gap={"5px"} alignItems={"center"}>
@@ -50,7 +51,7 @@ export const Title = () => {
         </Flex>
       </Flex>
       <Divider/>
-      <Comment/>
+      <Comment snippet={snippet} statistics={statistics} extraDetails={extraDetails}/>
 
     </Flex>
   );

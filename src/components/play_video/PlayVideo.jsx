@@ -1,11 +1,18 @@
 import { Box, Flex } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getSpecificVideoDetails } from "../../redux/playvideo/action";
 import { RightSection } from "./RightSection";
 import { Title } from "./Title";
-
 export const PlayVideo = () => {
   const { id } = useParams();
-  console.log(id);
+  const {isLoading,isError,details:{snippet,statistics},extraDetails} = useSelector((store)=>store.playVideoReducer);
+  const dispatch = useDispatch()
+  console.log("extra",extraDetails)
+    useEffect(()=>{
+      dispatch(getSpecificVideoDetails(id))
+    },[])
 
   return (
     <Flex
@@ -29,14 +36,12 @@ export const PlayVideo = () => {
             title={"Youtube Video Player"}
             allowFullScreen
             allow="autoplay"
-            clipboard-write
-            frameborder="0"
           ></iframe>
         </Box>
-        <Title/>
+        <Title snippet = {snippet} statistics={statistics} extraDetails={extraDetails}/>
       </Flex>
       <Flex border={"1px solid red"} width={["100%", "100%", "35%"]}>
-        <RightSection />
+        <RightSection snippet = {snippet} statistics={statistics} extraDetails={extraDetails} />
       </Flex>
     </Flex>
   );
