@@ -67,6 +67,7 @@ export const Display = (item) => {
       width={["80%", "300px", "250px"]}
       onClick={()=>{
         setToLocalStorage("c_id",channelId)
+        setToLocalStorage("title",title)
       }}
     >
       <Link

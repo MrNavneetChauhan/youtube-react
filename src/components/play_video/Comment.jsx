@@ -33,8 +33,8 @@ export const Comment = ({ snippet, statistics,extraDetails }) => {
           Subscribe
         </Button>
       </Flex>
-      <Flex flexWrap={"wrap"}>
-        {extraDetails?.snippet?.description}
+      <Flex  w={"100%"} p={"10px"} fontSize={"14px"} m={"15px auto"}  flexWrap={"wrap"}>
+        <Text>{extraDetails?.snippet?.description}</Text>
       </Flex>
       <Divider />
       <Flex>

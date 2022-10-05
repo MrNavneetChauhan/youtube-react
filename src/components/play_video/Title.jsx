@@ -7,22 +7,23 @@ import {MdReadMore} from "react-icons/md";
 import {FiMoreHorizontal} from "react-icons/fi";
 import { Comment } from "./Comment";
 import moment from "moment";
+import numeral from "numeral";
 export const Title = ({snippet,statistics,extraDetails}) => {
   return (
     <Flex p={"0 10px 0 10px"} gap={"10px"} flexDirection={"column"}>
       <Text fontSize={"18px"}>
       {extraDetails?.snippet?.title}
       </Text>
-      <Flex flexWrap={"wrap"} flexDirection={["column","row","row"]} justifyContent={"space-between"}>
-        <Flex gap={"5px"} fontSize={"14px"} color="gray">
+      <Flex  flexWrap={"wrap"} flexDirection={["column","row","row"]} justifyContent={"space-between"}>
+        <Flex gap={"4px"} fontSize={"14px"} color="gray">
           <Text>{extraDetails?.statistics?.viewCount} views</Text>
           <Text>•</Text>
-          <Text>{moment(extraDetails?.snippet?.publishedAt).format('llll')}</Text>
+          <Text>{moment(extraDetails?.snippet?.publishedAt).format('LL')}</Text>
         </Flex>
-        <Flex flexWrap={"wrap"} gap={["10px","15px","25px"]} alignItems={"center"}>
+        <Flex flexWrap={"wrap"} gap={["10px","15px","18px"]} alignItems={"center"}>
           <Flex gap={"5px"} alignItems={"center"}>
             <AiOutlineLike cursor={"pointer"} fontSize={["19px","19px","22px"]} />
-            <Text cursor={"pointer"} fontWeight="600" fontSize={["13px","13px","15px"]} title="I LIKE THIS">121K</Text>
+            <Text cursor={"pointer"} fontWeight="600" fontSize={["13px","13px","15px"]} title="I LIKE THIS">{numeral(extraDetails?.statistics?.likeCount).format('0a')}</Text>
           </Flex>
           <Flex gap={"5px"} alignItems={"center"}>
             <AiOutlineDislike cursor={"pointer"} fontSize={["19px","19px","22px"]} />

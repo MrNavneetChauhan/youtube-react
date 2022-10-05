@@ -3,16 +3,22 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSpecificVideoDetails } from "../../redux/playvideo/action";
+import { gettingRelatedContent } from "../../redux/relatedvideos/action";
 import { RightSection } from "./RightSection";
 import { Title } from "./Title";
 export const PlayVideo = () => {
   const { id } = useParams();
   const {isLoading,isError,details:{snippet,statistics},extraDetails} = useSelector((store)=>store.playVideoReducer);
+  const {relatedVideos} = useSelector((store)=>store.relatedVideoReducer);
+  console.log("relatedVideos",relatedVideos)
   const dispatch = useDispatch()
-  console.log("extra",extraDetails)
     useEffect(()=>{
       dispatch(getSpecificVideoDetails(id))
+      dispatch(gettingRelatedContent(id))
     },[])
+
+      
+
 
   return (
     <Flex
@@ -40,8 +46,12 @@ export const PlayVideo = () => {
         </Box>
         <Title snippet = {snippet} statistics={statistics} extraDetails={extraDetails}/>
       </Flex>
-      <Flex border={"1px solid red"} width={["100%", "100%", "35%"]}>
-        <RightSection snippet = {snippet} statistics={statistics} extraDetails={extraDetails} />
+      <Flex flexDirection={"column"} gap="15px" border={"1px solid red"} width={["100%", "100%", "35%"]}>
+        {relatedVideos.length && relatedVideos.map((item)=>{
+          return (
+            <RightSection item = {item} />
+          )
+        })}
       </Flex>
     </Flex>
   );
