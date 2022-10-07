@@ -52,7 +52,7 @@ export const Navbar = () => {
     (store) => store.searchReducer
   );
 
-  const throttle = useThrottle(text, 500);
+  const throttle = useThrottle(text, 200);
   useEffect(() => {
     dispatch(gettingSearchData(throttle));
   }, [throttle]);
