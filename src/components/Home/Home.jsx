@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { gettingVideosData, searchedVideos } from "../../redux/videos/action";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Loaders } from "../Loaders/Loaders";
+import { Error } from "../Error/Error";
 
 export const Home = () => {
   const { colorMode } = useContext(ColorContext);
@@ -52,7 +53,7 @@ export const Home = () => {
     }
   };
 
-  return (
+  return isLoading ? <Loaders/> : isError ? <Error/> : (
     <Box>
       <Flex>
         {/* side bar */}

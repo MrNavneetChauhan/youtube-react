@@ -25,9 +25,6 @@ export const searchDataError = () => {
 };
 
 export const gettingSearchData = (search) => (dispatch) => {
-  // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM"
-  // var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
-  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
   try {
     dispatch(searchDataLoading());
     axios

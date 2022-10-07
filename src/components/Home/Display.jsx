@@ -30,10 +30,6 @@ export const Display = (item) => {
   const _duration = moment.utc(seconds * 1000).format("mm:ss");
 
   const videoId = id?.videoId || id;
-
-  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
-  // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM";
-  // var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc"
   useEffect(() => {
     axios
       .get("/videos", {

@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSpecificVideoDetails } from "../../redux/playvideo/action";
 import { gettingRelatedContent } from "../../redux/relatedvideos/action";
+import { Loaders } from "../Loaders/Loaders";
 import { RightSection } from "./RightSection";
+import { Error } from "../Error/Error";
 import { Title } from "./Title";
 export const PlayVideo = () => {
   const { id } = useParams();
@@ -20,7 +22,7 @@ export const PlayVideo = () => {
 
 
 
-  return (
+  return isLoading ? <Loaders/> : isError ? <Error/>: (
     <Flex
       flexDirection={["column", "column", "row"]}
       width={"99%"}
@@ -40,7 +42,7 @@ export const PlayVideo = () => {
             src={`https://www.youtube.com/embed/${id}?autoplay=1`}
             title={"Youtube Video Player"}
             allowFullScreen
-            allow="autoplay"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           ></iframe>
         </Box>
         <Title snippet = {snippet} statistics={statistics} extraDetails={extraDetails}/>

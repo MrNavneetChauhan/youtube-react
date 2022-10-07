@@ -35,10 +35,6 @@ export const extraDetails = (payload) => {
 
 export const getSpecificVideoDetails = (id) => (dispatch) => {
   let c_id = getFromLocalStorage("c_id");
-  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
-  // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM";
-  // var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
-  // var key = "helo"
   try {
     dispatch(videoDetailsLoading());
     axios
@@ -47,6 +43,8 @@ export const getSpecificVideoDetails = (id) => (dispatch) => {
       )
       .then(({ data }) => {
         dispatch(videoDetailsSuccess(data.items[0]));
+      }).catch((err)=>{
+        dispatch(videoDetailsFailure())
       });
 
     axios
@@ -55,6 +53,8 @@ export const getSpecificVideoDetails = (id) => (dispatch) => {
       )
       .then(({ data }) => {
         dispatch(extraDetails(data.items[0]));
+      }).catch((err)=>{
+        dispatch(videoDetailsFailure())
       });
   } catch (err) {
     dispatch(videoDetailsFailure());
