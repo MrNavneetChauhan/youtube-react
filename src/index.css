@@ -19,6 +19,7 @@ code {
 
 .search_link{
   cursor: pointer;
+  color:black;
 }
 
 .search_link:hover{

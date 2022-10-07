@@ -12,6 +12,7 @@ export const Home = () => {
   const { colorMode } = useContext(ColorContext);
   const [search, setSearch] = useState("All");
   const dispatch = useDispatch();
+  console.log("process.env.REACT_APP_YT_KEY",process.env.REACT_APP_YT_KEY)
   const { video_data, searchParam, isLoading, isError } = useSelector(
     (store) => store.videosReducer
   );

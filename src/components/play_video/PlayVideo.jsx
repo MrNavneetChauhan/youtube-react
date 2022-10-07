@@ -29,11 +29,10 @@ export const PlayVideo = () => {
       justifyContent={["center", "center", "space-between"]}
       gap={["10px", "10px", "0"]}
     >
-      <Flex gap={"10px"} flexDirection={"column"} border={"1px solid red"} width={["100%", "100%", "63%"]}>
+      <Flex gap={"10px"} flexDirection={"column"} width={["100%", "100%", "63%"]}>
         <Box
           width={"100%"}
           height={["200px", "430px", "430px"]}
-          border={"5px solid black"}
         >
           <iframe
             width={"100%"}
@@ -46,7 +45,7 @@ export const PlayVideo = () => {
         </Box>
         <Title snippet = {snippet} statistics={statistics} extraDetails={extraDetails}/>
       </Flex>
-      <Flex flexDirection={"column"} gap="15px" border={"1px solid red"} width={["100%", "100%", "35%"]}>
+      <Flex flexDirection={"column"} gap="15px"  width={["100%", "100%", "35%"]}>
         {relatedVideos.map((item)=>{
           return (
             <RightSection item = {item} />

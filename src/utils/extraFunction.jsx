@@ -33,3 +33,9 @@ export const shortenChannelName = (title) => {
   }
   return title;
 };
+
+export const shortenDescription = (desc)=>{
+  if(desc && desc.length > 200){
+    return desc.substring(0,100)+"..."
+  }
+}

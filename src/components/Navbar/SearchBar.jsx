@@ -105,6 +105,9 @@ export const SearchBar = ({ colorMode }) => {
             background="white"
             w={"40%"}
             top={"50"}
+            onMouseLeave={()=>{
+              setShow(false)
+            }}
             
           >
             {" "}
@@ -115,6 +118,7 @@ export const SearchBar = ({ colorMode }) => {
                   className="search_link"
                   to={`search/${id}`}
                   key={index}
+                  color="black"
                   onClick={()=>{
                     setShow(false)
                   }}

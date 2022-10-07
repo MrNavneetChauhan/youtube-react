@@ -31,16 +31,16 @@ export const Display = (item) => {
 
   const videoId = id?.videoId || id;
 
-  // var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
   // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM";
-  var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc"
+  // var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc"
   useEffect(() => {
     axios
       .get("/videos", {
         params: {
           part: "contentDetails,statistics",
           id: videoId,
-          key: key,
+          key: process.env.REACT_APP_YT_KEY,
         },
       })
       .then(({ data: { items } }) => {
@@ -55,7 +55,7 @@ export const Display = (item) => {
         params: {
           part: "snippet",
           id: channelId,
-          key: key,
+          key: process.env.REACT_APP_YT_KEY,
         },
       })
       .then(({ data: { items } }) => {

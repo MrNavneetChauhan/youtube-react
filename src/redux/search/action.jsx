@@ -26,12 +26,13 @@ export const searchDataError = () => {
 
 export const gettingSearchData = (search) => (dispatch) => {
   // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM"
-  var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
+  // var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
+  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
   try {
     dispatch(searchDataLoading());
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${search}&type=video&key=${key}`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${search}&type=video&key=${process.env.REACT_APP_YT_KEY}`
       )
       .then(({ data }) => {
         dispatch(searchDataSuccess(data.items))

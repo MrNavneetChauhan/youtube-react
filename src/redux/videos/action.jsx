@@ -26,9 +26,9 @@ export const getVideosError = () => {
   };
 };
 
-// var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
 // var key =  "AIzaSyD41hkSAxKHA9hdnkguwHgdIdYsqwn7m9k"
-var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc"
+// var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc"
 // var key = "helo"
 
 export const gettingVideosData = () => async (dispatch, getState) => {
@@ -40,7 +40,7 @@ export const gettingVideosData = () => async (dispatch, getState) => {
         chart: "mostPopular",
         maxResults: 20,
         pageToken: getState().videosReducer.nextPageToken,
-        key: key,
+        key: process.env.REACT_APP_YT_KEY,
       },
     })
     .then(({ data }) => {
@@ -61,7 +61,7 @@ export const searchedVideos = (search) => async (dispatch, getState) => {
         maxResults: 20,
         pageToken: getState().videosReducer.nextPageToken,
         type: "video",
-        key: key,
+        key: process.env.REACT_APP_YT_KEY,
       },
     })
     .then(({ data }) => {

@@ -25,16 +25,16 @@ export const RightSection = ({ item }) => {
   const seconds = moment.duration(duration).asSeconds();
   const _durations = moment.utc(seconds * 1000).format("mm:ss");
 
-  // var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
   // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM"
-  var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
+  // var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
   useEffect(() => {
     axios
       .get("/videos", {
         params: {
           part: "contentDetails,statistics",
           id: videoId,
-          key: key,
+          key: process.env.REACT_APP_YT_KEY,
         },
       })
       .then(({ data: { items } }) => {
@@ -49,14 +49,12 @@ export const RightSection = ({ item }) => {
         flexDirection={["column", "column", "row"]}
         gap={["10px", "10px", "0"]}
         justifyContent={"space-between"}
-        border={"1px solid blue"}
         height={["300px", "350px", "110px"]}
         width={"100%"}
       >
         <Box
           width={["100%", "100%", "42%"]}
           height={["70%","80%","100%"]}
-          border={"1px solid red"}
           position="relative"
           
         >

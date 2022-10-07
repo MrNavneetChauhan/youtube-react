@@ -35,15 +35,15 @@ export const extraDetails = (payload) => {
 
 export const getSpecificVideoDetails = (id) => (dispatch) => {
   let c_id = getFromLocalStorage("c_id");
-  // var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
+  var key = "AIzaSyC7gR712tr_ZIszHk-xEJGz7oO65daeQ20";
   // var key = "AIzaSyDxd46ApMcIDxCdgKbAX5eH13OqTErTDYM";
-  var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
+  // var key = "AIzaSyAcNLcGQoNeXAlaziIiKK90kJh0WenPaVc";
   // var key = "helo"
   try {
     dispatch(videoDetailsLoading());
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/channels?part=statistics&part=snippet&part=contentDetails&part=localizations&id=${c_id}&pageToken=nextPageToken&key=${key}`
+        `https://youtube.googleapis.com/youtube/v3/channels?part=statistics&part=snippet&part=contentDetails&part=localizations&id=${c_id}&pageToken=nextPageToken&key=${process.env.REACT_APP_YT_KEY}`
       )
       .then(({ data }) => {
         dispatch(videoDetailsSuccess(data.items[0]));
@@ -51,7 +51,7 @@ export const getSpecificVideoDetails = (id) => (dispatch) => {
 
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=statistics&part=snippet&part=contentDetails&id=${id}&key=${key}`
+        `https://youtube.googleapis.com/youtube/v3/videos?part=statistics&part=snippet&part=contentDetails&id=${id}&key=${process.env.REACT_APP_YT_KEY}`
       )
       .then(({ data }) => {
         dispatch(extraDetails(data.items[0]));
