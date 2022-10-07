@@ -10,7 +10,7 @@ export const Error = ()=>{
         <Flex  onClick={()=>{
             settingShow(false)
             settingMobile(false)
-        }} w={"95%"} justifyContent="center" m="auto">
+        }} w={"95%"} justifyContent="center" m="10px auto">
             <Image  src="/error.gif"/>
         </Flex>
     )

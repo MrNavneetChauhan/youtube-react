@@ -22,7 +22,7 @@ export const SearchBar = ({ colorMode }) => {
   const handleSearch = (e) => {
     setText(e.target.value);
   };
-  const throttle = useThrottle(text, 800);
+  const throttle = useThrottle(text, 500);
 
   useEffect(() => {
     dispatch(gettingSearchData(throttle));
