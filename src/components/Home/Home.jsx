@@ -8,12 +8,14 @@ import { gettingVideosData, searchedVideos } from "../../redux/videos/action";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Loaders } from "../Loaders/Loaders";
 import { Error } from "../Error/Error";
+import { ShowSearchContext } from "../../context/showSearch";
+import { MobileSearchContext } from "../../context/MobileSearch";
 
 export const Home = () => {
   const { colorMode } = useContext(ColorContext);
   const [search, setSearch] = useState("All");
   const dispatch = useDispatch();
-  console.log("process.env.REACT_APP_YT_KEY",process.env.REACT_APP_YT_KEY)
+  console.log("process.env.REACT_APP_YT_KEY", process.env.REACT_APP_YT_KEY);
   const { video_data, searchParam, isLoading, isError } = useSelector(
     (store) => store.videosReducer
   );
@@ -53,15 +55,29 @@ export const Home = () => {
     }
   };
 
-  return isError ? <Error/> : (
-    <Box>
+  const {show,settingShow} = useContext(ShowSearchContext)
+  const {settingMobile} = useContext(MobileSearchContext)
+
+  return isError ? (
+    <Error />
+  ) : (
+    <Box onClick={()=>{
+      settingShow(false)
+      settingMobile(false)
+  }} >
       <Flex>
         {/* side bar */}
         <Show above="md">
           <SideBar />
         </Show>
         {/* main container */}
-        <Box w={"94%"}>
+        <Box
+          onClick={()=>{
+            settingShow(false)
+            settingMobile(false)
+        }}
+          w={"94%"}
+        >
           <Show above="md">
             <Flex
               flexWrap={"wrap"}

@@ -10,6 +10,8 @@ import { ColorContextProvider } from "./context/ColorContext";
 import axios from "axios";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { BrowserRouter } from "react-router-dom";
+import { ShowSearchContextProvider } from "./context/showSearch";
+import { MobileSearchContentProvider } from "./context/MobileSearch";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 axios.defaults.baseURL = "https://youtube.googleapis.com/youtube/v3";
 root.render(
@@ -18,7 +20,11 @@ root.render(
       <BrowserRouter>
         <ColorContextProvider>
           <SearchContextProvider>
-            <App />
+            <ShowSearchContextProvider>
+              <MobileSearchContentProvider>
+                <App />
+              </MobileSearchContentProvider>
+            </ShowSearchContextProvider>
           </SearchContextProvider>
         </ColorContextProvider>
       </BrowserRouter>

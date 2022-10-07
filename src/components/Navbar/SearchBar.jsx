@@ -6,17 +6,18 @@ import { FcSearch } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
+import { ShowSearchContext } from "../../context/showSearch";
 import { useThrottle } from "../../hooks/useThrottle";
 import { gettingSearchData } from "../../redux/search/action";
 import { Details } from "../../utils/extraFunction";
 
 export const SearchBar = ({ colorMode }) => {
   const { icon, showSearchIcon } = useContext(SearchContext);
+  const {show,settingShow} = useContext(ShowSearchContext)
   const { isLoading, isError, searchData } = useSelector(
     (store) => store.searchReducer
   );
   const [text, setText] = useState("");
-  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const handleSearch = (e) => {
     setText(e.target.value);
@@ -50,7 +51,7 @@ export const SearchBar = ({ colorMode }) => {
         <Input
           onFocus={() => {
             showSearchIcon(true);
-            setShow(true);
+            settingShow(true);
           }}
           onBlur={() => {
             showSearchIcon(false);
@@ -105,9 +106,6 @@ export const SearchBar = ({ colorMode }) => {
             background="white"
             w={"40%"}
             top={"50"}
-            onMouseLeave={()=>{
-              setShow(false)
-            }}
             
           >
             {" "}
@@ -120,7 +118,7 @@ export const SearchBar = ({ colorMode }) => {
                   key={index}
                   color="black"
                   onClick={()=>{
-                    setShow(false)
+                    settingShow(false)
                   }}
                 >
                   {item.snippet.title}

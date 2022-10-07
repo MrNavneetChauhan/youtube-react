@@ -18,7 +18,7 @@ import {
   Divider,
   Box,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SearchBar } from "./SearchBar";
 import { BiMenu, BiVideoPlus } from "react-icons/bi";
 import { BsFillMoonStarsFill, BsSearch, BsSun } from "react-icons/bs";
@@ -30,17 +30,20 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { IoLogoPlaystation } from "react-icons/io";
 import { MdSubscriptions, MdVideoLibrary, MdWatchLater } from "react-icons/md";
 import { FaHistory } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useThrottle } from "../../hooks/useThrottle";
 import { useDispatch, useSelector } from "react-redux";
 import { gettingSearchData } from "../../redux/search/action";
+import { ShowSearchContext } from "../../context/showSearch";
+import { MobileSearchContext } from "../../context/MobileSearch";
 export const Navbar = () => {
   const [flag, setFlag] = useState(true);
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate()
   const [text, setText] = useState("");
   const btnRef = React.useRef();
-  const [show, setShow] = useState(false);
+  const {mobile,settingMobile} = useContext(MobileSearchContext)
   const dispatch = useDispatch();
   const handleSearch = (e) => {
     setText(e.target.value);
@@ -48,7 +51,7 @@ export const Navbar = () => {
   const { isLoading, isError, searchData } = useSelector(
     (store) => store.searchReducer
   );
-  console.log("searchData", searchData);
+
   const throttle = useThrottle(text, 800);
   useEffect(() => {
     dispatch(gettingSearchData(throttle));
@@ -150,7 +153,7 @@ export const Navbar = () => {
                     <BsSearch
                       onClick={() => {
                         setFlag(false);
-                        setShow(true);
+                        settingMobile(true);
                       }}
                       fontSize={"20px"}
                     />
@@ -172,6 +175,8 @@ export const Navbar = () => {
               <AiOutlineArrowLeft
                 onClick={() => {
                   setFlag(true);
+                  settingMobile(false);
+                  navigate("/")
                 }}
                 fontSize={"20px"}
               />
@@ -182,7 +187,7 @@ export const Navbar = () => {
               placeholder="Search YouTube"
               onChange={handleSearch}
               onFocus={() => {
-                setShow(true);
+                settingMobile(true);
               }}
             />
             <Grid
@@ -385,7 +390,7 @@ export const Navbar = () => {
           </DrawerContent>
         </Drawer>
       </Flex>
-      {show ? (
+      {mobile ? (
         <Flex
           position={"absolute"}
           left={"11%"}
@@ -398,9 +403,6 @@ export const Navbar = () => {
           overflow={"auto"}
           gap="10px"
           p={"10px"}
-          onMouseLeave={()=>{
-            setShow(false)
-          }}
         >
           {searchData.map((item, index) => {
             const id = item?.id?.videoId || item.id;
@@ -410,7 +412,7 @@ export const Navbar = () => {
                 to={`search/${id}`}
                 key={index}
                 onClick={() => {
-                  setShow(false);
+                  settingMobile(false);
                 }}
               >
                 {item.snippet.title}

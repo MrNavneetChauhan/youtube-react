@@ -30,6 +30,8 @@ export const gettingRelatedContent = (id) => (dispatch) => {
     dispatch(getRelatedVideosLoading());
     axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&relatedToVideoId=${id}&key=${process.env.REACT_APP_YT_KEY}`).then(({data})=>{
       dispatch(getRelatedVideosSuccess(data.items))
+    }).catch(()=>{
+      dispatch(getRelatedVideosFailure())
     });
   } catch (err) {
     dispatch(getRelatedVideosFailure());
