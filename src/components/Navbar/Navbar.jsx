@@ -172,7 +172,7 @@ export const Navbar = () => {
                 <Avatar
                   w={["30px", "30px", "40px"]}
                   h={["30px", "30px", "40px"]}
-                  name="Dan Abrahmov"
+                  name={name}
                   src={url}
                   cursor="pointer"
                 />
