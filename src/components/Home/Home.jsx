@@ -53,7 +53,7 @@ export const Home = () => {
     }
   };
 
-  return isLoading ? <Loaders/> : isError ? <Error/> : (
+  return isError ? <Error/> : (
     <Box>
       <Flex>
         {/* side bar */}
