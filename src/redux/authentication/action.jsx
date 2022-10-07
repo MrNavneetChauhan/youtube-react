@@ -37,7 +37,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const Provider = new GoogleAuthProvider();
-export default signInWithPopup;
+
 
 export const fetchingUser = () => (dispatch) => {
   try {

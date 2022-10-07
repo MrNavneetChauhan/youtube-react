@@ -185,7 +185,7 @@ export const Navbar = () => {
                   borderRadius={"5px"}
                   color="white"
                 >
-                  Singup
+                  Signup
                 </Text>
               )}
             </Flex>
