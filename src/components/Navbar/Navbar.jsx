@@ -36,21 +36,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { gettingSearchData } from "../../redux/search/action";
 import { ShowSearchContext } from "../../context/showSearch";
 import { MobileSearchContext } from "../../context/MobileSearch";
+import { fetchingUser } from "../../redux/authentication/action";
+import { getFromLocalStorage } from "../../utils/localStorage";
 export const Navbar = () => {
   const [flag, setFlag] = useState(true);
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [text, setText] = useState("");
   const btnRef = React.useRef();
-  const {mobile,settingMobile} = useContext(MobileSearchContext)
+  const { mobile, settingMobile } = useContext(MobileSearchContext);
   const dispatch = useDispatch();
   const handleSearch = (e) => {
     setText(e.target.value);
   };
-  const { isLoading, isError, searchData } = useSelector(
-    (store) => store.searchReducer
-  );
+  const { searchData } = useSelector((store) => store.searchReducer);
+
+  const { token, name, url } = useSelector((store) => store.authReducer);
+  console.log("token", token);
+
+  const handleAuth = () => {
+    dispatch(fetchingUser());
+  };
 
   const throttle = useThrottle(text, 200);
   useEffect(() => {
@@ -161,12 +168,26 @@ export const Navbar = () => {
                   label="Search"
                 />
               </Show>
-              <Avatar
-                w={["30px", "30px", "40px"]}
-                h={["30px", "30px", "40px"]}
-                name="Dan Abrahmov"
-                src="https://bit.ly/dan-abramov"
-              />
+              {url ? (
+                <Avatar
+                  w={["30px", "30px", "40px"]}
+                  h={["30px", "30px", "40px"]}
+                  name="Dan Abrahmov"
+                  src={url}
+                  cursor="pointer"
+                />
+              ) : (
+                <Text
+                  onClick={handleAuth}
+                  cursor={"pointer"}
+                  background={"teal"}
+                  p="2px 10px 2px 10px"
+                  borderRadius={"5px"}
+                  color="white"
+                >
+                  Singup
+                </Text>
+              )}
             </Flex>
           </>
         ) : (
@@ -176,7 +197,7 @@ export const Navbar = () => {
                 onClick={() => {
                   setFlag(true);
                   settingMobile(false);
-                  navigate("/")
+                  navigate("/");
                 }}
                 fontSize={"20px"}
               />
@@ -415,7 +436,7 @@ export const Navbar = () => {
                   settingMobile(false);
                 }}
               >
-                {item.snippet.title}
+                {item?.snippet?.title}
               </Link>
             );
           })}
