@@ -5,7 +5,6 @@ const userSchema = new Schema(
     email_id: { type: String, rquired: true },
     accessToken: { type: String, required: true },
     image_url: { type: String, required: true },
-    password: { type: String, required: true },
   },
   {
     versionKey: false,

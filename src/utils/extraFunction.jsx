@@ -34,8 +34,18 @@ export const shortenChannelName = (title) => {
   return title;
 };
 
-export const shortenDescription = (desc)=>{
-  if(desc && desc.length > 200){
-    return desc.substring(0,100)+"..."
+export const shortenDescription = (desc) => {
+  if (desc && desc.length > 200) {
+    return desc.substring(0, 100) + "...";
   }
-}
+};
+
+export const notification = (toast, title, desc, status) => {
+  toast({
+    title: title,
+    description: desc,
+    status: status,
+    duration: 9000,
+    isClosable: true,
+  });
+};

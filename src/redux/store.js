@@ -6,12 +6,14 @@ import { playVideoReducer } from "./playvideo/playVideoReducer";
 import { relatedVideoReducer } from "./relatedvideos/relatedvide.reducer";
 import { searchReducer } from "./search/search.reducer";
 import { authReducer } from "./authentication/auth.reducer";
+import { commentReducer } from "./comment/comment.reducer";
 const reducer = combineReducers({
   videosReducer,
   playVideoReducer,
   relatedVideoReducer,
   searchReducer,
   authReducer,
+  commentReducer
 });
 export const store = legacy_createStore(
   reducer,

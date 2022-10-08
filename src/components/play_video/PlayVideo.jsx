@@ -8,11 +8,11 @@ import { Loaders } from "../Loaders/Loaders";
 import { RightSection } from "./RightSection";
 import { Error } from "../Error/Error";
 import { Title } from "./Title";
+import { setToLocalStorage } from "../../utils/localStorage";
 export const PlayVideo = () => {
   const { id } = useParams();
   const {isLoading,isError,details:{snippet,statistics},extraDetails} = useSelector((store)=>store.playVideoReducer);
   const {relatedVideos} = useSelector((store)=>store.relatedVideoReducer);
-  console.log("relatedVideos",relatedVideos)
   const dispatch = useDispatch()
     useEffect(()=>{
       dispatch(getSpecificVideoDetails(id))
@@ -45,7 +45,7 @@ export const PlayVideo = () => {
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           ></iframe>
         </Box>
-        <Title snippet = {snippet} statistics={statistics} extraDetails={extraDetails}/>
+        <Title snippet = {snippet}  statistics={statistics} extraDetails={extraDetails}/>
       </Flex>
       <Flex flexDirection={"column"} gap="15px"  width={["100%", "100%", "35%"]}>
         {relatedVideos.map((item)=>{

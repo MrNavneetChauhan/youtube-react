@@ -67,6 +67,7 @@ export const Display = (item) => {
       onClick={()=>{
         setToLocalStorage("c_id",channelId)
         setToLocalStorage("title",title)
+        setToLocalStorage("v_id",videoId)
       }}
     >
       <Link

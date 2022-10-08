@@ -6,19 +6,49 @@ import {
   Flex,
   Divider,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 import Picker from "emoji-picker-react";
 import { BiSmile } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdOutlineSort } from "react-icons/md";
 import InputEmoji from "react-input-emoji";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import numeral from "numeral";
+import { gettingComments, posttingComment } from "../../redux/comment/action";
+import { getFromLocalStorage } from "../../utils/localStorage";
 export const Comment = ({ snippet, statistics, extraDetails }) => {
   const shortDesc = extraDetails?.snippet?.description.substring(0, 299);
   const restDesc = extraDetails?.snippet?.description.split("");
-  restDesc?.splice(0,299)
+  const { url } = useSelector((store) => store.authReducer);
+  restDesc?.splice(0, 299);
   const [hide, setHide] = useState(true);
+  const [comment, setComment] = useState("");
+  const toast = useToast();
+  const handleComment = (e) => {
+    setComment(e.target.value);
+  };
+
+  const { isLoading, isError, comments } = useSelector(
+    (store) => store.commentReducer
+  );
+  console.log(comments, "comments");
+
+  const dispatch = useDispatch();
+  const handleCommentSubmission = (e) => {
+    dispatch(
+      posttingComment(toast, {
+        comment: comment,
+        profile: getFromLocalStorage("url"),
+        videoId: getFromLocalStorage("v_id"),
+      })
+    );
+  };
+
+  useEffect(() => {
+    dispatch(gettingComments());
+  }, []);
+
   return (
     <Flex flexWrap={"wrap"} gap={"10px"} flexDirection={"column"} w={"100%"}>
       <Flex alignItems={"center"} w={"100%"} justifyContent={"space-between"}>
@@ -45,10 +75,14 @@ export const Comment = ({ snippet, statistics, extraDetails }) => {
         flexWrap={"wrap"}
       >
         <Text>{shortDesc}</Text>
-        {hide ? "":<Text>{restDesc.join("")}</Text>}
-        <Button onClick={()=>{
-          setHide(!hide)
-        }} background={"none"} border="1px solid lightgray">
+        {hide ? "" : <Text>{restDesc.join("")}</Text>}
+        <Button
+          onClick={() => {
+            setHide(!hide);
+          }}
+          background={"none"}
+          border="1px solid lightgray"
+        >
           Show More
         </Button>
       </Flex>
@@ -64,20 +98,31 @@ export const Comment = ({ snippet, statistics, extraDetails }) => {
       </Flex>
       <Flex gap={"8px"} justifyContent={"center"} flexDir={"column"}>
         <Flex gap={"15px"}>
-          <Avatar width={"40px"} height="40px" />
-          <InputEmoji
+          <Avatar src={url} width={"40px"} height="40px" />
+          <Input
             border={"none"}
             borderBottom={"1px solid lightgray"}
             outlineColor="white"
             placeholder="Add a Comment"
+            onChange={handleComment}
           />
         </Flex>
         <Flex alignItems={"center"} justifyContent={"flex-end"}>
           <Flex gap={"10px"}>
             <Button>Cancel</Button>
-            <Button>Comment</Button>
+            <Button onClick={handleCommentSubmission}>Comment</Button>
           </Flex>
         </Flex>
+      </Flex>
+      <Flex mb={"20px"} mt={"20px"} gap={"10px"} flexDirection={"column"} w={"95%"} m="auto">
+        {comments.map((item) => {
+          return (
+            <Flex borderRadius={"10px"} p={"12px"} boxShadow={"dark-lg"} gap={"20px"}>
+              <Avatar w={"30px"}  height="30px" src={item.profile} />
+              <Text>{item.comment}</Text>
+            </Flex>
+          );
+        })}
       </Flex>
     </Flex>
   );

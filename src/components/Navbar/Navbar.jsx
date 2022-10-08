@@ -17,6 +17,7 @@ import {
   useDisclosure,
   Divider,
   Box,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { SearchBar } from "./SearchBar";
@@ -51,12 +52,12 @@ export const Navbar = () => {
     setText(e.target.value);
   };
   const { searchData } = useSelector((store) => store.searchReducer);
-
+  const toast = useToast()
   const { token, name, url } = useSelector((store) => store.authReducer);
-  console.log("token", token);
+
 
   const handleAuth = () => {
-    dispatch(fetchingUser());
+    dispatch(fetchingUser(toast));
   };
 
   const throttle = useThrottle(text, 200);

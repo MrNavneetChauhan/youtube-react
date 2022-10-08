@@ -6,6 +6,8 @@ import {
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { setToLocalStorage } from "../../utils/localStorage";
+import axios from "axios";
+import { notification } from "../../utils/extraFunction";
 export const userGetRequest = () => {
   return {
     type: USER_GET_REQUEST,
@@ -38,18 +40,29 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const Provider = new GoogleAuthProvider();
 
-
-export const fetchingUser = () => (dispatch) => {
+export const fetchingUser = (toast) => (dispatch) => {
   try {
     dispatch(userGetRequest());
     signInWithPopup(auth, Provider)
       .then((data) => {
+        console.log("data", data);
         let { user } = data;
-        let { accessToken, displayName, photoURL } = user;
+        let { accessToken, displayName, photoURL, email } = user;
+        console.log("ye hai email",email
+        
+        )
         setToLocalStorage("token", accessToken);
         setToLocalStorage("name", displayName);
         setToLocalStorage("url", photoURL);
         dispatch(userGetSuccess({ accessToken, displayName, photoURL }));
+        axios.post("https://youtube-by-navneet-server.herokuapp.com/users", {
+          username: displayName,
+          email_id: email,
+          accessToken: accessToken,
+          image_url: photoURL,
+        }).then((res)=>{
+          notification(toast,"Logged In Successfully","You have logged in successfully","success")
+        });
       })
       .catch((err) => {
         console.log(err.message);

@@ -4,6 +4,7 @@ const cors = require("cors");
 const passport = require("./config/passport");
 const session = require("express-session");
 const userController = require("./controllers/user.controller");
+const commentController = require("./controllers/comment.controller")
 // middlewares
 app.use(express.json());
 app.use(cors());
@@ -51,6 +52,7 @@ app.get("/auth/google/failure", (req, res) => {
 });
 
 app.use("/users", userController);
+app.use("/comments",commentController)
 
 // exporting
 module.exports = app;
