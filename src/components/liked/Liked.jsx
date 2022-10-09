@@ -69,7 +69,7 @@ export const Liked = () => {
             <Text>•</Text>
             <Text>No Views</Text>
             <Text>•</Text>
-            <Text>{"Updated 6 days agao"}</Text>
+            <Text>{"Updated 6 days ago"}</Text>
           </Flex>
           <Button
             mt={"10px"}

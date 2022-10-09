@@ -57,14 +57,14 @@ export const Saved = () => {
         </Box>
         <Box>
           <Text fontWeight={"600"} fontSize={"20px"}>
-            Liked Videos
+            Watch Later
           </Text>
           <Flex gap={"5px"} fontSize={"14px"} color="gray">
             <Text>{saved.length} videos</Text>
             <Text>•</Text>
             <Text>No Views</Text>
             <Text>•</Text>
-            <Text>{"Updated 6 days agao"}</Text>
+            <Text>{"Updated 6 days ago"}</Text>
           </Flex>
           <Button
             mt={"10px"}

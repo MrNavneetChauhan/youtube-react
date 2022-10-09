@@ -107,6 +107,9 @@ export const SearchBar = ({ colorMode }) => {
             background="white"
             w={"40%"}
             top={"50"}
+            onFocus={()=>{
+              settingShow(true)
+            }}
             
           >
             {" "}
