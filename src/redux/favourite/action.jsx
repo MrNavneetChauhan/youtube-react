@@ -119,15 +119,16 @@ export const gettingLikedVideos = () => (dispatch) => {
   }
 };
 
-export const dislikingVideo = (toast) => (dispatch) => {
+export const dislikingVideo = (toast,id) => (dispatch) => {
   try {
-    let id = getFromLocalStorage("del_id")
+    let ids = id || getFromLocalStorage("del_id")
     dispatch(addDisLikedVideoRequest());
     axios
-      .delete(`https://youtube-by-navneet-server.herokuapp.com/favourite/${id}`)
+      .delete(`https://youtube-by-navneet-server.herokuapp.com/favourite/${ids}`)
       .then(({ data }) => {
         const { status, message, description } = data;
         dispatch(addDisLikedVideoSuccess());
+        dispatch(gettingLikedVideos());
         notification(toast, message, description, status);
       });
   } catch (err) {

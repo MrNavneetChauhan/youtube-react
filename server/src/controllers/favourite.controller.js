@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
   try {
     const { user_id } = req.query;
     const favourite = await Favourite.find({ user_id: user_id }).sort({
-      posted_at: 1,
+      createdAt: -1,
     });
     return res.status(200).send({ status: "success", favourite: favourite });
   } catch (err) {

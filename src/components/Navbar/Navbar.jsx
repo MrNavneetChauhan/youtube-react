@@ -52,9 +52,8 @@ export const Navbar = () => {
     setText(e.target.value);
   };
   const { searchData } = useSelector((store) => store.searchReducer);
-  const toast = useToast()
+  const toast = useToast();
   const { token, name, url } = useSelector((store) => store.authReducer);
-
 
   const handleAuth = () => {
     dispatch(fetchingUser(toast));
@@ -64,6 +63,7 @@ export const Navbar = () => {
   useEffect(() => {
     dispatch(gettingSearchData(throttle));
   }, [throttle]);
+
 
   return (
     <>
@@ -176,6 +176,7 @@ export const Navbar = () => {
                   name={name}
                   src={url}
                   cursor="pointer"
+                  onClick={onOpen}
                 />
               ) : (
                 <Text
@@ -325,17 +326,12 @@ export const Navbar = () => {
                 <Text>History</Text>
               </HStack>
 
-                
               <HStack
                 p={"8px 30px 8px 30px"}
                 w={"100%"}
                 gap={"10px"}
                 cursor={"pointer"}
                 _hover={{ background: "#e7e0e0" }}
-                onClick={()=>{
-                  navigate("/saved_vides")
-                  onClose()
-                }}
               >
                 <AiFillPlaySquare fontSize={"21px"} />
                 <Text>Your Videos</Text>
@@ -347,6 +343,10 @@ export const Navbar = () => {
                 gap={"10px"}
                 cursor={"pointer"}
                 _hover={{ background: "#e7e0e0" }}
+                onClick={() => {
+                  navigate("/saved_vides");
+                  onClose();
+                }}
               >
                 <MdWatchLater fontSize={"21px"} />
                 <Text>Watch Later</Text>
@@ -358,9 +358,9 @@ export const Navbar = () => {
                 gap={"10px"}
                 cursor={"pointer"}
                 _hover={{ background: "#e7e0e0" }}
-                onClick={()=>{
-                  navigate("/liked_videos")
-                  onClose()
+                onClick={() => {
+                  navigate("/liked_videos");
+                  onClose();
                 }}
               >
                 <AiFillLike fontSize={"21px"} />

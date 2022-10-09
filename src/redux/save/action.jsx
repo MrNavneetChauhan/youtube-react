@@ -1,4 +1,7 @@
 import {
+  DEL_SAVED_VIDEO_ERROR,
+  DEL_SAVED_VIDEO_REQUEST,
+  DEL_SAVED_VIDEO_SUCCESS,
   GET_SAVED_VIDEO_ERROR,
   GET_SAVED_VIDEO_REQUEST,
   GET_SAVED_VIDEO_SUCCESS,
@@ -46,6 +49,24 @@ export const getSavedVideoFailure = () => {
   };
 };
 
+export const delSaveVideoRequest = () => {
+  return {
+    type: DEL_SAVED_VIDEO_REQUEST,
+  };
+};
+
+export const delSaveVideoSuccess = () => {
+  return {
+    type: DEL_SAVED_VIDEO_SUCCESS,
+  };
+};
+
+export const delSaveVideoFailure = () => {
+  return {
+    type: DEL_SAVED_VIDEO_ERROR,
+  };
+};
+
 export const gettingSavedVideos = () => (dispatch) => {
   try {
     const user_id = getFromLocalStorage("user_id");
@@ -55,7 +76,7 @@ export const gettingSavedVideos = () => (dispatch) => {
         `https://youtube-by-navneet-server.herokuapp.com/saved?user_id=${user_id}`
       )
       .then(({ data }) => {
-        dispatch(getSavedVideoSuccess(data.save))
+        dispatch(getSavedVideoSuccess(data.save));
       })
       .catch((err) => {
         console.log(err.message);
@@ -93,5 +114,24 @@ export const postingSavedVideos = (toast, payload) => (dispatch) => {
       });
   } catch (err) {
     dispatch(postSavedVideoFailure());
+  }
+};
+
+export const removingVideo = (toast,id) => (dispatch) => {
+  try {
+    console.log("id",id)
+    dispatch(delSaveVideoRequest());
+    axios
+      .delete(
+        `https://youtube-by-navneet-server.herokuapp.com/saved/${id}`
+      )
+      .then(({ data }) => {
+        const { status, message, description } = data;
+        dispatch(delSaveVideoSuccess());
+        dispatch(gettingSavedVideos());
+        notification(toast, message, description, status);
+      });
+  } catch (err) {
+    dispatch(delSaveVideoFailure());
   }
 };

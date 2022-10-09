@@ -32,11 +32,30 @@ router.get("/", async (req, res) => {
   try {
     const { user_id } = req.query;
     const save = await Save.find({ user_id: user_id }).sort({
-      posted_at: 1,
+      createdAt: -1,
     });
     return res.status(200).send({ status: "success", save: save });
   } catch (err) {
     return res.status(400).send({ status: "error", message: err.message });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const save = await Save.findByIdAndDelete(req.params.id, {
+      new: 1,
+    });
+    return res
+      .status(200)
+      .send({
+        status: "success",
+        message: "Video is removed",
+        description: "This video is removed from saved list successfully",
+        save:save
+      });
+
+  } catch (err) {
+    return res.status(400).send({status:"error",message:err.message})
   }
 });
 

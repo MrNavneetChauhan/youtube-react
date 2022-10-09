@@ -7,12 +7,12 @@ const favouriteSchema = new Schema(
     video_thumbnail: { type: String, required: true },
     video_title: { type: String, required: true },
     views: { type: String, required: true },
-    user_id:{type:Schema.Types.ObjectId,ref:"user",required:true},
-    video_id:{type:String,required:true}
+    user_id: { type: Schema.Types.ObjectId, ref: "user", required: true },
+    video_id: { type: String, required: true },
   },
   {
-    versionKey: false,
-    timeStamp: true,
+    versionKey:false,
+    timestamps:true
   }
 );
 

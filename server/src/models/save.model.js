@@ -12,7 +12,7 @@ const saveSchema = new Schema(
   },
   {
     versionKey: false,
-    timeStamp: true,
+    timeStamps: true,
   }
 );
 
