@@ -100,7 +100,7 @@ export const SearchBar = ({ colorMode }) => {
             flexDirection={"column"}
             gap="10px"
             padding={"10px"}
-            position={"absolute"}
+            position={"fixed"}
             left={"25%"}
             zIndex={"2"}
             height={"500px"}

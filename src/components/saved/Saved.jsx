@@ -38,7 +38,7 @@ export const Saved = () => {
       justifyContent={["center", "center", "space-around"]}
       alignItems={["center", "center", "start"]}
       w={"100%"}
-      m={"20px auto"}
+      m={"70px auto"}
       flexDirection={["column", "column", "row"]}
     >
       <Flex flexDirection={"column"} width={["95%", "95%", "30%"]}>

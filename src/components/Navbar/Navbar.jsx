@@ -431,10 +431,10 @@ export const Navbar = () => {
       </Flex>
       {mobile ? (
         <Flex
-          position={"absolute"}
+          position={"fixed"}
           left={"11%"}
           zIndex="2"
-          top={"52px"}
+          top={0}
           background={"white"}
           width="75%"
           height={"400px"}
