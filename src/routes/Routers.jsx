@@ -10,7 +10,7 @@ export const Routers = () => {
       <Route path="/" element={<Home />} />
       <Route path="/play_video/:id" element={<PlayVideo />} />
       <Route path="/search/:id" element={<Result/>}/>
-      <Route path="/saved_vides" element={<Saved/>}/>
+      <Route path="/saved_videos" element={<Saved/>}/>
       <Route path="/liked_videos" element={<Liked/>}/>
     </Routes>
   );

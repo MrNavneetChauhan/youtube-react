@@ -24,7 +24,7 @@ import { SearchBar } from "./SearchBar";
 import { BiMenu, BiVideoPlus } from "react-icons/bi";
 import { BsFillMoonStarsFill, BsSearch, BsSun } from "react-icons/bs";
 import { AiFillLike, AiFillPlaySquare, AiOutlineBell } from "react-icons/ai";
-import { Details } from "../../utils/extraFunction";
+import { Details, notification } from "../../utils/extraFunction";
 import { FaMicrophoneAlt, FaMobile } from "react-icons/fa";
 import { GiMultiDirections } from "react-icons/gi";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -356,7 +356,7 @@ export const Navbar = () => {
                 cursor={"pointer"}
                 _hover={{ background: "#e7e0e0" }}
                 onClick={() => {
-                  navigate("/saved_vides");
+                  token ? navigate("/saved_videos") : notification(toast,"Login Required","You have to Login first","info")
                   onClose();
                 }}
               >
@@ -383,7 +383,7 @@ export const Navbar = () => {
                 cursor={"pointer"}
                 _hover={{ background: "#e7e0e0" }}
                 onClick={() => {
-                  navigate("/liked_videos");
+                  token ? navigate("/liked_videos") : notification(toast,"Login Required","You have to Login first","info")
                   onClose();
                 }}
               >
