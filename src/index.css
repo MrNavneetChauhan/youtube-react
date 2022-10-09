@@ -31,3 +31,8 @@ code {
   border-color: white;
 
 }
+.link-o{
+display:flex;
+gap: 10px;
+width: 90%;
+}

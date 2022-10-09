@@ -94,6 +94,7 @@ export const postingLikedVideos = (toast, payload) => (dispatch) => {
           "Not added",
           "This video is already  added to the liked section "
         );
+        dispatch(addLikedVideoSuccess());
       });
   } catch (err) {
     dispatch(addLikedVideoFailure());

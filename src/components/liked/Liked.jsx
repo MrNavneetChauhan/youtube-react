@@ -94,48 +94,57 @@ export const Liked = () => {
       >
         {favourites.map((item, index) => {
           return (
-            <Link to={`/play_video/${item?.video_id}`}>
             <Flex
               p={"10px"}
               background={"#E5E5E5"}
               gap={"10px"}
+              justifyContent={"space-between"}
               w="100%"
-              h={"100px"}
             >
-              <Flex
-                justifyContent={"space-between"}
-                width={["30%", "30%", "22%"]}
-                alignItems={"center"}
-              >
-                <Text fontWeight={"600"}>{index + 1}</Text>
-                <Box position={"relative"} h={"100%"}>
-                  <Image
-                    objectFit={"cover"}
-                    h={"100%"}
-                    src={item?.video_thumbnail}
-                  />
-                  <Text
-                    width={"40px"}
-                    position="absolute"
-                    bottom={1}
-                    right={1}
-                    textAlign="center"
-                    background={"teal"}
-                    color="white"
-                    borderRadius={"5px"}
-                    fontSize={"12px"}
-                  >
-                    {item?.duration}
+              <Link className="link-o" to={`/play_video/${item?.video_id}`}>
+                <Flex
+                  justifyContent={"space-between"}
+                  width={["30%", "30%", "22%"]}
+                  alignItems={"center"}
+                >
+                  <Text mr={"5px"} fontWeight={"600"}>{index + 1}</Text>
+                  <Box position={"relative"} h={"100%"}>
+                    <Image
+                      objectFit={"cover"}
+                      h={"100%"}
+                      src={item?.video_thumbnail}
+                    />
+                    <Text
+                      width={"40px"}
+                      position="absolute"
+                      bottom={1}
+                      right={1}
+                      textAlign="center"
+                      background={"teal"}
+                      color="white"
+                      borderRadius={"5px"}
+                      fontSize={"12px"}
+                    >
+                      {item?.duration}
+                    </Text>
+                  </Box>
+                </Flex>
+                <Flex gap={"2px"} flexDirection={"column"} w={"75%"}>
+                  <Text fontSize={["13px", "15px", "15px"]}>
+                    {item?.video_title}
                   </Text>
-                </Box>
-              </Flex>
-              <Flex gap={"2px"} flexDirection={"column"} w={"75%"}>
-                <Text>{item?.video_title}</Text>
-                <Text fontSize={"13px"} color="gray">
-                  {item?.channel_title}
-                </Text>
-              </Flex>
-              <Flex alignItems={"center"} height={"100%"}>
+                  <Text fontSize={"13px"} color="gray">
+                    {item?.channel_title}
+                  </Text>
+                </Flex>
+              </Link>
+              <Flex
+                border={"1px solid gray"}
+                borderRadius={"50%"}
+                alignItems={"center"}
+                height={"100%"}
+                _hover={{background:"rgba(0, 0, 0, 0.589)"}}
+              >
                 <AiFillDelete
                   cursor={"pointer"}
                   fontSize={"25px"}
@@ -145,7 +154,6 @@ export const Liked = () => {
                 />
               </Flex>
             </Flex>
-            </Link>
           );
         })}
       </Flex>
