@@ -105,12 +105,19 @@ export const postingSavedVideos = (toast, payload) => (dispatch) => {
         notification(toast, "Video is Saved", message, status);
       })
       .catch((err) => {
-        console.log(err);
-        notification(
-          toast,
-          "Not added",
-          "This video is already  added to the saved section "
-        );
+        if(!user_id){
+          notification(
+            toast,
+            "Login Required",
+            "You have to login first to save the video"
+          );
+        }else{
+          notification(
+            toast,
+            "Not saved",
+            "This video is already  saved "
+          );
+        }
       });
   } catch (err) {
     dispatch(postSavedVideoFailure());

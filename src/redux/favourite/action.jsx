@@ -93,14 +93,14 @@ export const postingLikedVideos = (toast, payload) => (dispatch) => {
         if(!user_id){
           notification(
             toast,
-            "Login First",
+            "Login Required",
             "You need to Login first",
             "error"
           );
         }else{
           notification(
             toast,
-            "Not added",
+            "Not Liked",
             "This video is already  added to the liked section ",
             "error"
           );
