@@ -48,7 +48,21 @@ export const getSavedVideoFailure = () => {
 
 export const gettingSavedVideos = () => (dispatch) => {
   try {
-  } catch (err) {}
+    const user_id = getFromLocalStorage("user_id");
+    dispatch(getSavedVideoRequest());
+    axios
+      .get(
+        `https://youtube-by-navneet-server.herokuapp.com/saved?user_id=${user_id}`
+      )
+      .then(({ data }) => {
+        dispatch(getSavedVideoSuccess(data.save))
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  } catch (err) {
+    dispatch(getSavedVideoFailure());
+  }
 };
 
 export const postingSavedVideos = (toast, payload) => (dispatch) => {
@@ -57,11 +71,11 @@ export const postingSavedVideos = (toast, payload) => (dispatch) => {
     let video_id = getFromLocalStorage("v_id");
     payload.user_id = user_id;
     payload.video_id = video_id;
-    console.log("payload", payload);
+    console.log("save", payload);
     dispatch(postSavedVideoRequest());
     axios
       .post(
-        `https://youtube-by-navneet-server.herokuapp.com/save?user_id=${user_id}&video_id=${video_id}`,
+        `https://youtube-by-navneet-server.herokuapp.com/saved?user_id=${user_id}&video_id=${video_id}`,
         payload
       )
       .then(({ data }) => {

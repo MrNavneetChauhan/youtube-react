@@ -325,12 +325,17 @@ export const Navbar = () => {
                 <Text>History</Text>
               </HStack>
 
+                
               <HStack
                 p={"8px 30px 8px 30px"}
                 w={"100%"}
                 gap={"10px"}
                 cursor={"pointer"}
                 _hover={{ background: "#e7e0e0" }}
+                onClick={()=>{
+                  navigate("/saved_vides")
+                  onClose()
+                }}
               >
                 <AiFillPlaySquare fontSize={"21px"} />
                 <Text>Your Videos</Text>
@@ -353,6 +358,10 @@ export const Navbar = () => {
                 gap={"10px"}
                 cursor={"pointer"}
                 _hover={{ background: "#e7e0e0" }}
+                onClick={()=>{
+                  navigate("/liked_videos")
+                  onClose()
+                }}
               >
                 <AiFillLike fontSize={"21px"} />
                 <Text>Liked Videos</Text>

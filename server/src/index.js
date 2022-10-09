@@ -56,7 +56,7 @@ app.get("/auth/google/failure", (req, res) => {
 app.use("/users", userController);
 app.use("/comments", commentController);
 app.use("/favourite", favouriteController);
-app.use("/save", saveController);
+app.use("/saved", saveController);
 
 // exporting
 module.exports = app;

@@ -19,6 +19,7 @@ import { useState } from "react";
 import { notification } from "../../utils/extraFunction";
 import { useDispatch } from "react-redux";
 import { dislikingVideo, postingLikedVideos } from "../../redux/favourite/action";
+import { postingSavedVideos } from "../../redux/save/action";
 export const Title = ({ snippet, statistics, extraDetails }) => {
   const dispatch = useDispatch();
   const toast = useToast();
@@ -41,6 +42,10 @@ export const Title = ({ snippet, statistics, extraDetails }) => {
     setDisLik("simple")
     dispatch(postingLikedVideos(toast,payload))
   };
+
+  const handleSaveData = ()=>{
+    dispatch(postingSavedVideos(toast,payload))
+  }
 
   const handleDisLikeColour = () => {
     setDisLik("dislike");
@@ -157,7 +162,7 @@ export const Title = ({ snippet, statistics, extraDetails }) => {
               CLIP
             </Text>
           </Flex>
-          <Flex gap={"5px"} alignItems={"center"}>
+          <Flex onClick={handleSaveData} gap={"5px"} alignItems={"center"}>
             <MdReadMore
               cursor={"pointer"}
               fontSize={["19px", "19px", "22px"]}

@@ -25,3 +25,9 @@ code {
 .search_link:hover{
   background-color: lightgray;
 }
+
+.sidebar-links{
+  text-decoration: none !important;
+  border-color: white;
+
+}

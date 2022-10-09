@@ -109,7 +109,7 @@ export const gettingLikedVideos = () => (dispatch) => {
         `https://youtube-by-navneet-server.herokuapp.com/favourite?user_id=${user_id}`
       )
       .then(({ data }) => {
-        console.log("here is your data", data);
+        dispatch(getLikedVideSuccess(data.favourite))
       })
       .catch((err) => {
         console.log(err.message);

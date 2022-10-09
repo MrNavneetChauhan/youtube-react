@@ -5,6 +5,7 @@ import numeral from "numeral";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { shortenChannelName, ShortenTitle } from "../../utils/extraFunction";
+import { setToLocalStorage } from "../../utils/localStorage";
 
 export const RightSection = ({ item }) => {
   const {
@@ -48,6 +49,9 @@ export const RightSection = ({ item }) => {
         justifyContent={"space-between"}
         height={["300px", "350px", "110px"]}
         width={"100%"}
+        onClick={()=>{
+          setToLocalStorage("v_id",videoId)
+        }}
       >
         <Box
           width={["100%", "100%", "42%"]}
