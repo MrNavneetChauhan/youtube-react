@@ -46,7 +46,7 @@ export const posttingComment = (toast,payload)=>(dispatch)=>{
             notification(toast,"Comment Added","You have posted comment successully","success")
             dispatch(gettingComments())
         }).catch((err)=>{
-            notification(toast,"Blank Comment","Please enter something to post comment","error");
+            notification(toast,"Blank Comment","Please enter something to post comment","info");
             dispatch(commentPostSuccess());
         })
     }catch(err){

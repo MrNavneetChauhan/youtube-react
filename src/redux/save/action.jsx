@@ -109,13 +109,15 @@ export const postingSavedVideos = (toast, payload) => (dispatch) => {
           notification(
             toast,
             "Login Required",
-            "You have to login first to save the video"
+            "You have to login first to save the video",
+            "info"
           );
         }else{
           notification(
             toast,
             "Not saved",
-            "This video is already  saved "
+            "This video is already  saved ",
+            "info"
           );
         }
       });
