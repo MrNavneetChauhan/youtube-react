@@ -65,6 +65,7 @@ export const SideBar = () => {
         <MdVideoLibrary />
         <Text fontSize={"14px"}>Library</Text>
       </Flex>
+      
     </Flex>
   );
 };

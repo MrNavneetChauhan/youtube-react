@@ -37,8 +37,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { gettingSearchData } from "../../redux/search/action";
 import { ShowSearchContext } from "../../context/showSearch";
 import { MobileSearchContext } from "../../context/MobileSearch";
-import { fetchingUser } from "../../redux/authentication/action";
+import { fetchingUser, loggingOut } from "../../redux/authentication/action";
 import { getFromLocalStorage } from "../../utils/localStorage";
+import { FiLogOut } from "react-icons/fi";
 export const Navbar = () => {
   const [flag, setFlag] = useState(true);
   const { colorMode, toggleColorMode } = useColorMode();
@@ -47,7 +48,7 @@ export const Navbar = () => {
   const [text, setText] = useState("");
   const btnRef = React.useRef();
   const { mobile, settingMobile } = useContext(MobileSearchContext);
-  const {settingShow} = useContext(ShowSearchContext)
+  const { settingShow } = useContext(ShowSearchContext);
   const dispatch = useDispatch();
   const handleSearch = (e) => {
     setText(e.target.value);
@@ -65,6 +66,9 @@ export const Navbar = () => {
     dispatch(gettingSearchData(throttle));
   }, [throttle]);
 
+  const handleLogOut = ()=>{
+    dispatch(loggingOut(toast,onClose))
+  }
 
   return (
     <>
@@ -79,7 +83,7 @@ export const Navbar = () => {
         position={"fixed"}
         top={0}
         zIndex={10}
-        background={colorMode === "light" ? "white":"#1A202C"}
+        background={colorMode === "light" ? "white" : "#1A202C"}
       >
         {flag ? (
           <>
@@ -90,8 +94,8 @@ export const Navbar = () => {
               width={"180px"}
               height={"50px"}
               gap={"20px"}
-              onClick={()=>{
-                settingShow(false)
+              onClick={() => {
+                settingShow(false);
               }}
             >
               <Show above="md">
@@ -358,6 +362,18 @@ export const Navbar = () => {
               >
                 <MdWatchLater fontSize={"21px"} />
                 <Text>Watch Later</Text>
+              </HStack>
+
+              <HStack
+                p={"8px 30px 8px 30px"}
+                w={"100%"}
+                gap={"10px"}
+                cursor={"pointer"}
+                _hover={{ background: "#e7e0e0" }}
+                onClick={handleLogOut}
+              >
+                <FiLogOut fontSize={"21px"} />
+                <Text>Logout</Text>
               </HStack>
 
               <HStack
