@@ -11,18 +11,24 @@ import { Title } from "./Title";
 import { setToLocalStorage } from "../../utils/localStorage";
 export const PlayVideo = () => {
   const { id } = useParams();
-  const {isLoading,isError,details:{snippet,statistics},extraDetails} = useSelector((store)=>store.playVideoReducer);
-  const {relatedVideos} = useSelector((store)=>store.relatedVideoReducer);
-  const dispatch = useDispatch()
-    useEffect(()=>{
-      dispatch(getSpecificVideoDetails(id))
-      dispatch(gettingRelatedContent(id))
-    },[id])
+  const {
+    isLoading,
+    isError,
+    details: { snippet, statistics },
+    extraDetails,
+  } = useSelector((store) => store.playVideoReducer);
+  const { relatedVideos } = useSelector((store) => store.relatedVideoReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getSpecificVideoDetails(id));
+    dispatch(gettingRelatedContent(id));
+  }, [id]);
 
-
-
-
-  return isLoading ? <Loaders/> : isError ? <Error/>: (
+  return isLoading ? (
+    <Loaders />
+  ) : isError ? (
+    <Error />
+  ) : (
     <Flex
       flexDirection={["column", "column", "row"]}
       width={"99%"}
@@ -31,11 +37,12 @@ export const PlayVideo = () => {
       justifyContent={["center", "center", "space-between"]}
       gap={["10px", "10px", "0"]}
     >
-      <Flex gap={"10px"} flexDirection={"column"} width={["100%", "100%", "63%"]}>
-        <Box
-          width={"100%"}
-          height={["200px", "430px", "430px"]}
-        >
+      <Flex
+        gap={"10px"}
+        flexDirection={"column"}
+        width={["100%", "100%", "63%"]}
+      >
+        <Box width={"100%"} height={["200px", "430px", "430px"]}>
           <iframe
             width={"100%"}
             height={"100%"}
@@ -45,13 +52,15 @@ export const PlayVideo = () => {
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           ></iframe>
         </Box>
-        <Title snippet = {snippet}  statistics={statistics} extraDetails={extraDetails}/>
+        <Title
+          snippet={snippet}
+          statistics={statistics}
+          extraDetails={extraDetails}
+        />
       </Flex>
-      <Flex flexDirection={"column"} gap="15px"  width={["100%", "100%", "35%"]}>
-        {relatedVideos.map((item)=>{
-          return (
-            <RightSection item = {item} />
-          )
+      <Flex flexDirection={"column"} gap="15px" width={["100%", "100%", "35%"]}>
+        {relatedVideos.map((item) => {
+          return isLoading ? <Loaders /> : <RightSection item={item} />;
         })}
       </Flex>
     </Flex>

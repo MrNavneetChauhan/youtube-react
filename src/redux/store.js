@@ -7,13 +7,15 @@ import { relatedVideoReducer } from "./relatedvideos/relatedvide.reducer";
 import { searchReducer } from "./search/search.reducer";
 import { authReducer } from "./authentication/auth.reducer";
 import { commentReducer } from "./comment/comment.reducer";
+import { favouriteReducer } from "./favourite/favourite.reducer";
 const reducer = combineReducers({
-  videosReducer,
-  playVideoReducer,
-  relatedVideoReducer,
-  searchReducer,
-  authReducer,
-  commentReducer
+  // videosReducer,
+  // playVideoReducer,
+  // relatedVideoReducer,
+  // searchReducer,
+  // authReducer,
+  // commentReducer,
+  // favouriteReducer,
 });
 export const store = legacy_createStore(
   reducer,

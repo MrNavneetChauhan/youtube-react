@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import numeral from "numeral";
 import { gettingComments, posttingComment } from "../../redux/comment/action";
 import { getFromLocalStorage } from "../../utils/localStorage";
+import {Loaders} from "../Loaders/Loaders";
 export const Comment = ({ snippet, statistics, extraDetails }) => {
   const shortDesc = extraDetails?.snippet?.description.substring(0, 299);
   const restDesc = extraDetails?.snippet?.description.split("");
@@ -32,7 +33,6 @@ export const Comment = ({ snippet, statistics, extraDetails }) => {
   const { isLoading, isError, comments } = useSelector(
     (store) => store.commentReducer
   );
-  console.log(comments, "comments");
 
   const dispatch = useDispatch();
   const handleCommentSubmission = (e) => {
@@ -49,7 +49,7 @@ export const Comment = ({ snippet, statistics, extraDetails }) => {
     dispatch(gettingComments());
   }, []);
 
-  return (
+  return isLoading ? <Loaders/> : (
     <Flex flexWrap={"wrap"} gap={"10px"} flexDirection={"column"} w={"100%"}>
       <Flex alignItems={"center"} w={"100%"} justifyContent={"space-between"}>
         <Flex p={"0 5px 0 5px"} alignItems={"center"} gap={"18px"}>
@@ -109,7 +109,9 @@ export const Comment = ({ snippet, statistics, extraDetails }) => {
         </Flex>
         <Flex alignItems={"center"} justifyContent={"flex-end"}>
           <Flex gap={"10px"}>
-            <Button>Cancel</Button>
+            <Button onClick={()=>{
+              setComment("")
+            }}>Cancel</Button>
             <Button onClick={handleCommentSubmission}>Comment</Button>
           </Flex>
         </Flex>

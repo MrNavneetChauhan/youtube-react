@@ -55,6 +55,7 @@ export const SearchBar = ({ colorMode }) => {
           }}
           onBlur={() => {
             showSearchIcon(false);
+            settingShow(false)
           }}
           onChange={handleSearch}
           cursor={"pointer"}

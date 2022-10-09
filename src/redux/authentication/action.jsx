@@ -60,8 +60,10 @@ export const fetchingUser = (toast) => (dispatch) => {
           email_id: email,
           accessToken: accessToken,
           image_url: photoURL,
-        }).then((res)=>{
-          notification(toast,"Logged In Successfully","You have logged in successfully","success")
+        }).then(({data})=>{
+          const {status,user_id} = data;
+          setToLocalStorage("user_id",user_id);
+          notification(toast,"Logged In Successfully","You have logged in successfully",status)
         });
       })
       .catch((err) => {
