@@ -5,6 +5,7 @@ import numeral from "numeral";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { shortenDescription, ShortenTitle } from "../../utils/extraFunction";
+import { setToLocalStorage } from "../../utils/localStorage";
 export const ContentBox = ({ item }) => {
   const [view, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
@@ -68,10 +69,27 @@ export const ContentBox = ({ item }) => {
         boxShadow={"2xl"}
         borderRadius="10px"
         cursor={"pointer"}
+        onClick={() => {
+          setToLocalStorage("v_id", videoId);
+        }}
       >
-        <Box position={"relative"} width={["100%", "100%", "35%"]} h={["65%", "100%", "100%"]}>
+        <Box
+          position={"relative"}
+          width={["100%", "100%", "35%"]}
+          h={["65%", "100%", "100%"]}
+        >
           <Image w={"100%"} h="100%" src={url} />
-          <Text borderRadius={"5px"} p="0 5px 0 5px" background={"teal"} color="white"  position={"absolute"} bottom={1} right={2}>{_duration}</Text>
+          <Text
+            borderRadius={"5px"}
+            p="0 5px 0 5px"
+            background={"teal"}
+            color="white"
+            position={"absolute"}
+            bottom={1}
+            right={2}
+          >
+            {_duration}
+          </Text>
         </Box>
         <Flex
           padding={"10px"}
