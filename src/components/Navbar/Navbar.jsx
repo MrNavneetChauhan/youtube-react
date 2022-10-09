@@ -47,6 +47,7 @@ export const Navbar = () => {
   const [text, setText] = useState("");
   const btnRef = React.useRef();
   const { mobile, settingMobile } = useContext(MobileSearchContext);
+  const {settingShow} = useContext(ShowSearchContext)
   const dispatch = useDispatch();
   const handleSearch = (e) => {
     setText(e.target.value);
@@ -75,6 +76,10 @@ export const Navbar = () => {
         boxShadow={"md"}
         borderTop={"none"}
         w="100%"
+        position={"fixed"}
+        top={0}
+        zIndex={10}
+        background={colorMode === "light" ? "white":"#1A202C"}
       >
         {flag ? (
           <>
@@ -85,6 +90,9 @@ export const Navbar = () => {
               width={"180px"}
               height={"50px"}
               gap={"20px"}
+              onClick={()=>{
+                settingShow(false)
+              }}
             >
               <Show above="md">
                 <BiMenu

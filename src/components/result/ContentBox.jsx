@@ -66,6 +66,7 @@ export const ContentBox = ({ item }) => {
         height={["", "", "200px"]}
         flexDirection={["column", "column", "row"]}
         gap="20px"
+        mt={"60px"}
         boxShadow={"2xl"}
         borderRadius="10px"
         cursor={"pointer"}

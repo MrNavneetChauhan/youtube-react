@@ -33,9 +33,10 @@ export const PlayVideo = () => {
       flexDirection={["column", "column", "row"]}
       width={"99%"}
       border={"1px solid transparent"}
-      m={"30px auto"}
+      m={"65px auto"}
       justifyContent={["center", "center", "space-between"]}
       gap={["10px", "10px", "0"]}
+      
     >
       <Flex
         gap={"10px"}

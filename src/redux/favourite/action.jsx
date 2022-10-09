@@ -69,6 +69,7 @@ export const addDisLikedVideoFailure = () => {
 };
 
 export const postingLikedVideos = (toast, payload) => (dispatch) => {
+  console.log("payload",payload)
   try {
     let user_id = getFromLocalStorage("user_id");
     let video_id = getFromLocalStorage("v_id");
@@ -89,11 +90,21 @@ export const postingLikedVideos = (toast, payload) => (dispatch) => {
       })
       .catch((err) => {
         console.log(err);
-        notification(
-          toast,
-          "Not added",
-          "This video is already  added to the liked section "
-        );
+        if(!user_id){
+          notification(
+            toast,
+            "Login First",
+            "You need to Login first",
+            "error"
+          );
+        }else{
+          notification(
+            toast,
+            "Not added",
+            "This video is already  added to the liked section ",
+            "error"
+          );
+        }
         dispatch(addLikedVideoSuccess());
       });
   } catch (err) {

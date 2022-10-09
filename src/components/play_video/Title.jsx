@@ -29,7 +29,7 @@ export const Title = ({ snippet, statistics, extraDetails }) => {
   const seconds = moment.duration(duration).asSeconds();
   const _durations = moment.utc(seconds * 1000).format("mm:ss");
   const payload = {
-    video_thumbnail:extraDetails?.snippet?.thumbnails?.maxres?.url,
+    video_thumbnail:extraDetails?.snippet?.thumbnails?.high?.url,
     video_title:extraDetails?.snippet?.title,
     channel_title:extraDetails?.snippet?.channelTitle,
     views:extraDetails?.statistics?.viewCount,

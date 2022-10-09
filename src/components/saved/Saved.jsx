@@ -16,6 +16,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { Error } from "../Error/Error";
 import { Loaders } from "../Loaders/Loaders";
 import { Link } from "react-router-dom";
+import moment from "moment";
 export const Saved = () => {
   const { isLoading, isError, saved } = useSelector(
     (store) => store.saveReducer
@@ -26,7 +27,8 @@ export const Saved = () => {
     dispatch(gettingSavedVideos());
   }, []);
   const toast = useToast();
-
+  let recent_time = saved[0]?.createdAt;
+  const _duration = moment(recent_time).format('LTS');
   return isLoading ? (
     <Loaders />
   ) : isError ? (
@@ -64,7 +66,7 @@ export const Saved = () => {
             <Text>•</Text>
             <Text>No Views</Text>
             <Text>•</Text>
-            <Text>{"Updated 6 days ago"}</Text>
+            <Text>{`Updated ${_duration} ago`}</Text>
           </Flex>
           <Button
             mt={"10px"}

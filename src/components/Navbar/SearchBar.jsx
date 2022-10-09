@@ -49,13 +49,13 @@ export const SearchBar = ({ colorMode }) => {
           ""
         )}
         <Input
+        zIndex={5}
           onFocus={() => {
             showSearchIcon(true);
             settingShow(true);
           }}
           onBlur={() => {
             showSearchIcon(false);
-            settingShow(false)
           }}
           onChange={handleSearch}
           cursor={"pointer"}
@@ -121,6 +121,7 @@ export const SearchBar = ({ colorMode }) => {
                   to={`search/${id}`}
                   key={index}
                   color="black"
+                  
                   onClick={()=>{
                     settingShow(false)
                   }}

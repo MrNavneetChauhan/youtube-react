@@ -65,7 +65,7 @@ export const Home = () => {
       settingShow(false)
       settingMobile(false)
   }} >
-      <Flex>
+      <Flex mt={"65px"}>
         {/* side bar */}
         <Show above="md">
           <SideBar />

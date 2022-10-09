@@ -19,16 +19,19 @@ import { AiFillDelete } from "react-icons/ai";
 import { Loaders } from "../Loaders/Loaders";
 import { Error } from "../Error/Error";
 import { Link } from "react-router-dom";
+import moment from "moment/moment";
 export const Liked = () => {
   const { isLoading, isError, favourites } = useSelector(
     (store) => store.favouriteReducer
   );
-
   const { name, url } = useSelector((store) => store.authReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(gettingLikedVideos());
   }, []);
+
+  let recent_time = favourites[0]?.createdAt;
+  const _duration = moment(recent_time).format('LTS');
 
   const toast = useToast();
 
@@ -69,7 +72,7 @@ export const Liked = () => {
             <Text>•</Text>
             <Text>No Views</Text>
             <Text>•</Text>
-            <Text>{"Updated 6 days ago"}</Text>
+            <Text>{`updated at ${_duration} ago`}</Text>
           </Flex>
           <Button
             mt={"10px"}
