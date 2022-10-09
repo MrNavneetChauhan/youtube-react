@@ -10,11 +10,15 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { dislikingVideo, gettingLikedVideos } from "../../redux/favourite/action";
+import {
+  dislikingVideo,
+  gettingLikedVideos,
+} from "../../redux/favourite/action";
 import { BiLock } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Loaders } from "../Loaders/Loaders";
-import {Error} from "../Error/Error";
+import { Error } from "../Error/Error";
+import { Link } from "react-router-dom";
 export const Liked = () => {
   const { isLoading, isError, favourites } = useSelector(
     (store) => store.favouriteReducer
@@ -28,7 +32,11 @@ export const Liked = () => {
 
   const toast = useToast();
 
-  return isLoading ? <Loaders/> : isError ? <Error/>: (
+  return isLoading ? (
+    <Loaders />
+  ) : isError ? (
+    <Error />
+  ) : (
     <Flex
       justifyContent={["center", "center", "space-around"]}
       alignItems={["center", "center", "start"]}
@@ -86,7 +94,14 @@ export const Liked = () => {
       >
         {favourites.map((item, index) => {
           return (
-            <Flex   p={"10px"}      background={"#E5E5E5"} gap={"10px"} w="100%" h={"100px"}>
+            <Link to={`/play_video/${item?.video_id}`}>
+            <Flex
+              p={"10px"}
+              background={"#E5E5E5"}
+              gap={"10px"}
+              w="100%"
+              h={"100px"}
+            >
               <Flex
                 justifyContent={"space-between"}
                 width={["30%", "30%", "22%"]}
@@ -121,11 +136,16 @@ export const Liked = () => {
                 </Text>
               </Flex>
               <Flex alignItems={"center"} height={"100%"}>
-                <AiFillDelete cursor={"pointer"} fontSize={"25px"} onClick={() => {
-                  dispatch(dislikingVideo(toast,item._id))
-                }} />
+                <AiFillDelete
+                  cursor={"pointer"}
+                  fontSize={"25px"}
+                  onClick={() => {
+                    dispatch(dislikingVideo(toast, item._id));
+                  }}
+                />
               </Flex>
             </Flex>
+            </Link>
           );
         })}
       </Flex>

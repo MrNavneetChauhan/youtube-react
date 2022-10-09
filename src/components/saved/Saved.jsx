@@ -15,6 +15,7 @@ import { BiLock } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Error } from "../Error/Error";
 import { Loaders } from "../Loaders/Loaders";
+import { Link } from "react-router-dom";
 export const Saved = () => {
   const { isLoading, isError, saved } = useSelector(
     (store) => store.saveReducer
@@ -88,6 +89,7 @@ export const Saved = () => {
       >
         {saved.map((item, index) => {
           return (
+            <Link to={`/play_video/${item?.video_id}`}>
             <Flex
               p={"10px"}
               background={"#E5E5E5"}
@@ -134,6 +136,7 @@ export const Saved = () => {
                 />
               </Flex>
             </Flex>
+            </Link>
           );
         })}
       </Flex>
