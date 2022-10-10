@@ -224,6 +224,9 @@ export const Navbar = () => {
               onFocus={() => {
                 settingMobile(true);
               }}
+              onBlur={()=>{
+                settingMobile(false)
+              }}
             />
             <Grid
               border={"1px solid #313131"}

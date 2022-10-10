@@ -121,10 +121,10 @@ export const SearchBar = ({ colorMode }) => {
                   to={`search/${id}`}
                   key={index}
                   color="black"
-                  
                   onClick={()=>{
                     settingShow(false)
                   }}
+      
                 >
                   {item.snippet.title}
                 </Link>

@@ -75,18 +75,18 @@ export const Title = ({ snippet, statistics, extraDetails }) => {
               <AiOutlineLike
                 onClick={handleLikeColour}
                 cursor={"pointer"}
-                fontSize={["19px", "19px", "22px"]}
+                fontSize={["25px", "25px", "30px"]}
               />
             ) : lik === "like" ? (
               <AiFillLike
                 cursor={"pointer"}
-                fontSize={["19px", "19px", "22px"]}
+                fontSize={["25px", "25px", "30px"]}
               />
             ) : (
               <AiOutlineLike
                 onClick={handleLikeColour}
                 cursor={"pointer"}
-                fontSize={["19px", "19px", "22px"]}
+                fontSize={["25px", "25px", "30px"]}
               />
             )}
             <Text
@@ -108,12 +108,12 @@ export const Title = ({ snippet, statistics, extraDetails }) => {
             ) : dislik === "dislike" ? (
               <AiFillDislike
                 cursor={"pointer"}
-                fontSize={["19px", "19px", "22px"]}
+                fontSize={["25px", "25px", "30px"]}
               />
             ) : (
               <AiOutlineDislike
                 cursor={"pointer"}
-                fontSize={["19px", "19px", "22px"]}
+                fontSize={["25px", "25px", "30px"]}
                 onClick={handleDisLikeColour}
               />
             )}
@@ -129,7 +129,7 @@ export const Title = ({ snippet, statistics, extraDetails }) => {
           <Flex gap={"5px"} alignItems={"center"}>
             <RiShareForwardLine
               cursor={"pointer"}
-              fontSize={["19px", "19px", "22px"]}
+              fontSize={["25px", "25px", "30px"]}
             />
             <Text
               cursor={"pointer"}
@@ -179,7 +179,7 @@ export const Title = ({ snippet, statistics, extraDetails }) => {
           <Flex gap={"5px"} alignItems={"center"}>
             <FiMoreHorizontal
               cursor={"pointer"}
-              fontSize={["19px", "19px", "22px"]}
+              fontSize={["25px", "25px", "30px"]}
             />
             <Text
               fontWeight="600"

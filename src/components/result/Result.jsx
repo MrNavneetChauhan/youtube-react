@@ -18,7 +18,7 @@ export const Result = () => {
   }, [id]);
 
   return isLoading? <Loaders/>: isError ? <Error/> : (
-    <Flex gap={"30px"} flexDirection={"column"} w={"92%"} m="20px auto" >
+    <Flex gap={"15px"} flexDirection={"column"} w={"92%"} m="20px auto" >
       {relatedVideos.map((item) => {
         return isLoading ? <Loaders/> : <ContentBox item={item} />;
       })}

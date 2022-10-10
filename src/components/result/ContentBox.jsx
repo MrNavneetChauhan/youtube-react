@@ -72,6 +72,7 @@ export const ContentBox = ({ item }) => {
         cursor={"pointer"}
         onClick={() => {
           setToLocalStorage("v_id", videoId);
+          setToLocalStorage("c_id",channelId)
         }}
       >
         <Box
