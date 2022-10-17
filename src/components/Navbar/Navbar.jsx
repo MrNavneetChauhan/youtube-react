@@ -450,7 +450,7 @@ export const Navbar = () => {
           position={"fixed"}
           left={"11%"}
           zIndex="2"
-          top={2}
+          top={55}
           background={"white"}
           width="75%"
           height={"400px"}
