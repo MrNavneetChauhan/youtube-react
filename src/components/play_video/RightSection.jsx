@@ -50,7 +50,9 @@ export const RightSection = ({ item }) => {
         height={["300px", "350px", "110px"]}
         width={"100%"}
         onClick={()=>{
-          setToLocalStorage("v_id",videoId)
+        setToLocalStorage("c_id",channelId)
+        setToLocalStorage("v_id",videoId)
+
         }}
       >
         <Box
