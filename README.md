@@ -4,15 +4,16 @@
 
                                             **Features of the Project**
 
-1) Login and Signup Authentication using Masai API.
-2) Recommended tags on nav bar.
-3) Video owner details and thumbnails
-4) Debouncing functionality.
-Tech Stack: HTML || CSS || JavaScript
+1) Sign up with Google Oauth. 
+2) User can like or comment on any video. User can add the videos to watch later section as well as saved section.
+3) Fully Responsive with top notch functionalities.
+4) Comments /liked videos/saved videos are stored in mongo db. 
+5) Debouncing functionality, infinite scrolling, skeleton loaders etc are used 
+Tech Stack: REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
 
                                            **Tech Stacks used in this Projects**
 
-  HTML || Java Script  || CSS (Youtube Api used to Fetch data )
+REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
 
 
                                            **Let's visit the Site and explore it's feature**
@@ -34,8 +35,8 @@ Tech Stack: HTML || CSS || JavaScript
     </tr>
     <tr>
           <td>2</td>
-          <td>SignIn/SignOut</td>
-          <td>masai based token's authentication</td>
+          <td>Signup/authentication</td>
+          <td>Google Oauth</td>
     </tr>
     <tr>
          <td>3</td>
@@ -51,6 +52,18 @@ Tech Stack: HTML || CSS || JavaScript
           <td>5</td>
               <td>Selected video Display</td>
               <td>When you click on the video it will take you to the playvideo page where you can watch it</td>
+      <tr/>
+  
+  <tr>
+          <td>6</td>
+              <td>Liked videos & watch later</td>
+              <td>When you click on like or save videos will save to there respective sections</td>
+      <tr/>
+  
+    <tr>
+          <td>7</td>
+              <td>Toggle Theme</td>
+              <td>Theme can also be changed,dark or light</td>
       <tr/>
   </table>
   
