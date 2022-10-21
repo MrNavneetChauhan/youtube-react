@@ -59,11 +59,6 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
               <td>Liked videos & watch later</td>
               <td>When you click on like or save videos will save to there respective sections</td>
       <tr/>
-  
-    <tr><td>7</td>
-              <td>Toggle Theme</td>
-              <td>Theme can also be changed,dark or light</td>
-      <tr/>
   </table>
   
   
@@ -76,7 +71,8 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
 
                                                **Signup/SignIn Authentication**
                                                           
- **When user will click on signup he/she will be redirected to a very simple page of authentication, where you have to put put credentials and token will be create on the basis of your password. and if it matches then it will redirect you to home page again.
+ **When user will click on signup he/she will be redirected google Oauth, and will auto signin through it's email id username.
+![image](https://user-images.githubusercontent.com/93375038/197108707-df9ad06f-f60c-4fdc-bf03-4b30cd10af55.png)
 
 
 
@@ -103,7 +99,7 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
 
 
                                                  **Selected video Display Page**
-  **When you click any of the video then it will take you to the play video page where you can watch that video as you normally watch in the youtube. You can also watch it in full screen and can see all the video details like it's description,title,likes,channel owner name, and its subscriber. i have also created the comment section, and will soon introduce the posting of data there, so that you can comment there.**
+  **When you click any of the video then it will take you to the play video page where you can watch that video as you normally watch in the youtube. You can also watch it in full screen and can see all the video details like it's description,title,likes,channel owner name, and its subscriber. i have also created the comment section,where you  can add comment, if you are signin**
 ![image](https://user-images.githubusercontent.com/93375038/153740276-23051502-3811-4c26-8323-5fe7f1c105ad.png)
 
   <br/>
