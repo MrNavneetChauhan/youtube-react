@@ -60,9 +60,9 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
               <td>When you click on like or save videos, it will save to there respective sections</td>
       <tr/>
     <tr>
-          <td>6</td>
-              <td>Liked videos & watch later</td>
-              <td>When you click on like or save videos, it will save to there respective sections</td>
+          <td>7</td>
+              <td>Toggle Color theme</td>
+              <td>You can toggle the theme of site, either dark or light</td>
       <tr/>
   </table>
   
