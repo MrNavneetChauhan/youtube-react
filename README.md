@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+                                          **Introduction to YouTube-Clone**
+  Youtube is a video-streaming platform used by creators across the globe to publish original content.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+                                            **Features of the Project**
 
-In the project directory, you can run:
+1) Login and Signup Authentication using Masai API.
+2) Recommended tags on nav bar.
+3) Video owner details and thumbnails
+4) Debouncing functionality.
+Tech Stack: HTML || CSS || JavaScript
 
-### `npm start`
+                                           **Tech Stacks used in this Projects**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  HTML || Java Script  || CSS (Youtube Api used to Fetch data )
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+                                           **Let's visit the Site and explore it's feature**
+                                            
+                                            
+                                            
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  <table>
+    <tr>
+      <th>Sr.No</th>
+          <th>Site page</th>
+          <th>Features</th>
+      <th>Remarks</th>
+    </tr>
+    <tr>
+      <td>1</td>
+          <td>Landing Page</td>
+          <td>latest videos, different tags on navbar </td>
+    </tr>
+    <tr>
+          <td>2</td>
+          <td>SignIn/SignOut</td>
+          <td>masai based token's authentication</td>
+    </tr>
+    <tr>
+         <td>3</td>
+          <td>Search page</td>
+          <td>Deboucing factor applied on search bar, it will allow api calls after 1sec only, and user will get search results </td>
+    </tr>
+    <tr>
+        <td>4</td>
+          <td>Search results</td>
+          <td>after clicking on search bar result it wll show you results of that particular video in other page</td>
+    </tr>
+    <tr>
+          <td>5</td>
+              <td>Selected video Display</td>
+              <td>When you click on the video it will take you to the playvideo page where you can watch it</td>
+      <tr/>
+  </table>
+  
+  
 
-### `npm run build`
+                                               **Introduction to Landing Page**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**There are different tags on the search bar based on your search result , if you click them it will show result according to them (tags:- All,coding,Memes,css,etc just below the search bar) and you cal also find the creater channel's logo, channel's name, and it's likes and views** 
+![image](https://user-images.githubusercontent.com/93375038/153739944-367ee165-79a2-4a85-86f1-4873d9d14bf3.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+                                               **Signup/SignIn Authentication**
+                                                          
+ **When user will click on signup he/she will be redirected to a very simple page of authentication, where you have to put put credentials and token will be create on the basis of your password. and if it matches then it will redirect you to home page again.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+                                                 **Search Bar functionality**
+  **When you search any thing on the search bar it will show you result after 1s. because of debouncing functionlaity, because if user have good typing speed then he will only search that result which he want or in other terms only that api will be called, and if user has very less typing speed or he want to search that specific result then within one sec of wait he will get that result**
+  
+  ![image](https://user-images.githubusercontent.com/93375038/153740135-cf3b9c70-9a46-4b8a-ade1-79dc42ba91db.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  <br/>
+  <br/>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+)
+  **when you click on the search result for example as i have searched "Popaya" i will click on the popaya and it will now take me to the other page where i will get all the videos related to popaya**
+  ![image](https://user-images.githubusercontent.com/93375038/153740207-815374fb-900a-4500-9328-b6e9fbdc852a.png)
 
-### Code Splitting
+  <br/>
+  <br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+                                                 **Selected video Display Page**
+  **When you click any of the video then it will take you to the play video page where you can watch that video as you normally watch in the youtube. You can also watch it in full screen and can see all the video details like it's description,title,likes,channel owner name, and its subscriber. i have also created the comment section, and will soon introduce the posting of data there, so that you can comment there.**
+![image](https://user-images.githubusercontent.com/93375038/153740276-23051502-3811-4c26-8323-5fe7f1c105ad.png)
 
-### Advanced Configuration
+  <br/>
+  <br/>
+  
+  
+![image](https://user-images.githubusercontent.com/93375038/153740314-cff3d581-cb1b-4acf-9c01-8fbe42294c29.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+![image](https://user-images.githubusercontent.com/93375038/153740318-9d8e5950-4294-4261-86e2-8282fd9f3ccf.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
