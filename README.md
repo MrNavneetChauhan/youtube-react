@@ -71,7 +71,8 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
                                                **Introduction to Landing Page**
 
 **There are different tags on the search bar based on your search result , if you click them it will show result according to them (tags:- All,coding,Memes,css,etc just below the search bar) and you cal also find the creater channel's logo, channel's name, and it's likes and views** 
-![image](https://user-images.githubusercontent.com/93375038/153739944-367ee165-79a2-4a85-86f1-4873d9d14bf3.png)
+![image](https://user-images.githubusercontent.com/93375038/197111503-55643647-15f6-437a-bc86-95b8ff5b0eed.png)
+
 
 
                                                **Signup/SignIn Authentication**
@@ -84,7 +85,7 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
                                                  **Search Bar functionality**
   **When you search any thing on the search bar it will show you result after 1s. because of debouncing functionlaity, because if user have good typing speed then he will only search that result which he want or in other terms only that api will be called, and if user has very less typing speed or he want to search that specific result then within one sec of wait he will get that result**
   
-  ![image](https://user-images.githubusercontent.com/93375038/153740135-cf3b9c70-9a46-4b8a-ade1-79dc42ba91db.png)
+  ![image](https://user-images.githubusercontent.com/93375038/197111558-5f1ca875-52e0-408a-adb1-99b55d6995f1.png)
 
   <br/>
   <br/>
@@ -93,8 +94,9 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
 
 
 )
-  **when you click on the search result for example as i have searched "Popaya" i will click on the popaya and it will now take me to the other page where i will get all the videos related to popaya**
-  ![image](https://user-images.githubusercontent.com/93375038/153740207-815374fb-900a-4500-9328-b6e9fbdc852a.png)
+  **when you click on the search result for example as i have searched "namastey javascript" i will click on the any search result and it will now take me to the other page where i will get all the videos related to namastey javascript**
+  
+  ![image](https://user-images.githubusercontent.com/93375038/197111667-639fdb7e-636e-4da7-8de5-38a83bc38371.png)
 
   <br/>
   <br/>
@@ -105,16 +107,16 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
 
                                                  **Selected video Display Page**
   **When you click any of the video then it will take you to the play video page where you can watch that video as you normally watch in the youtube. You can also watch it in full screen and can see all the video details like it's description,title,likes,channel owner name, and its subscriber. i have also created the comment section,where you  can add comment, if you are signin**
-![image](https://user-images.githubusercontent.com/93375038/153740276-23051502-3811-4c26-8323-5fe7f1c105ad.png)
+  
+  ![image](https://user-images.githubusercontent.com/93375038/197111717-143aae07-cf7c-49fa-85f3-984aa4b6f004.png)
 
   <br/>
   <br/>
   
-  
-![image](https://user-images.githubusercontent.com/93375038/153740314-cff3d581-cb1b-4acf-9c01-8fbe42294c29.png)
+                                           **Liked Video Section or Watch Later Section**
+**When you like video or click on save it will added to liked video section or watch later section. you can also go to saved video section or liked video section and can see those added videos, you can also remove them.
 
-
-![image](https://user-images.githubusercontent.com/93375038/153740318-9d8e5950-4294-4261-86e2-8282fd9f3ccf.png)
+![image](https://user-images.githubusercontent.com/93375038/197112084-cd8dde82-1bfb-467b-82a9-0a6e38542101.png)
 
 
 
