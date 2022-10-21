@@ -46,7 +46,7 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
     <tr>
         <td>4</td>
           <td>Search results</td>
-          <td>after clicking on search bar result it wll show you results of that particular video in other page</td>
+          <td>after clicking on search bar result, it wll show you results of that particular video in other page</td>
     </tr>
     <tr>
           <td>5</td>
@@ -57,7 +57,12 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
   <tr>
           <td>6</td>
               <td>Liked videos & watch later</td>
-              <td>When you click on like or save videos will save to there respective sections</td>
+              <td>When you click on like or save videos, it will save to there respective sections</td>
+      <tr/>
+    <tr>
+          <td>6</td>
+              <td>Liked videos & watch later</td>
+              <td>When you click on like or save videos, it will save to there respective sections</td>
       <tr/>
   </table>
   
