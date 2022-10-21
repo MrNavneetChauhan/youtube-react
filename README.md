@@ -125,6 +125,13 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
 
 <br/>
 <br/>
+
+                                                      **Toggle Theme**
+**You can toggle the theme on Clicking moon or sun,,in case of mobile, you will see mobile icon.**
+![image](https://user-images.githubusercontent.com/93375038/197113806-9d9b20e9-341f-4023-b680-ab4d1224b14e.png)
+
+<br/>
+<br/>
                                                         **Sign Out**
 **To logout you have to click either on hamburger menu or profile, then menu will show where it signout link is there **
 ![image](https://user-images.githubusercontent.com/93375038/197112591-ab5c2264-4563-49a2-9f62-55f8f64879c2.png)
