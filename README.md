@@ -64,6 +64,11 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
               <td>Toggle Color theme</td>
               <td>You can toggle the theme of site, either dark or light</td>
       <tr/>
+  <tr>
+          <td>8</td>
+              <td>Sign Out</td>
+              <td>You can signout also.</td>
+      <tr/>
   </table>
   
   
@@ -117,6 +122,13 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
 **When you like video or click on save it will added to liked video section or watch later section. you can also go to saved video section or liked video section and can see those added videos, you can also remove them.
 
 ![image](https://user-images.githubusercontent.com/93375038/197112084-cd8dde82-1bfb-467b-82a9-0a6e38542101.png)
+
+<br/>
+<br/>
+                                                        **Sign Out**
+**To logout you have to click either on hamburger menu or profile, then menu will show where it signout link is there **
+![image](https://user-images.githubusercontent.com/93375038/197112591-ab5c2264-4563-49a2-9f62-55f8f64879c2.png)
+                                                        
 
 
 
