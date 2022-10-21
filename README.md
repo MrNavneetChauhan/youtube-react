@@ -155,7 +155,8 @@ REACT | REDUX | CHAKRA UI |MONGO-DB | EXPRESS | MONGOOSE
 
 <br/>
 <br/>
-                                                        **Sign Out**
+
+                                                       **Sign Out**
 **To logout you have to click either on hamburger menu or profile, then menu will show where it signout link is there **
 
 ![image](https://user-images.githubusercontent.com/93375038/197112591-ab5c2264-4563-49a2-9f62-55f8f64879c2.png)
