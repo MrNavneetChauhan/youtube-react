@@ -78,7 +78,7 @@ export const fetchingUser = (toast) => (dispatch) => {
         setToLocalStorage("url", photoURL);
         dispatch(userGetSuccess({ accessToken, displayName, photoURL }));
         axios
-          .post("https://youtube-by-navneet-server.herokuapp.com/users", {
+          .post("https://backy-dao7.onrender.com/users", {
             username: displayName,
             email_id: email,
             accessToken: accessToken,

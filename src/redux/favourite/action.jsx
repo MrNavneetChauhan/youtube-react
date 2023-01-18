@@ -79,7 +79,7 @@ export const postingLikedVideos = (toast, payload) => (dispatch) => {
     dispatch(addLikedVideoRequest());
     axios
       .post(
-        `https://youtube-by-navneet-server.herokuapp.com/favourite?user_id=${user_id}&video_id=${video_id}`,
+        `https://backy-dao7.onrender.com/favourite?user_id=${user_id}&video_id=${video_id}`,
         payload
       )
       .then(({ data }) => {
@@ -118,7 +118,7 @@ export const gettingLikedVideos = () => (dispatch) => {
     dispatch(getLikedVideoRequest());
     axios
       .get(
-        `https://youtube-by-navneet-server.herokuapp.com/favourite?user_id=${user_id}`
+        `https://backy-dao7.onrender.com/favourite?user_id=${user_id}`
       )
       .then(({ data }) => {
         dispatch(getLikedVideSuccess(data.favourite))
@@ -136,7 +136,7 @@ export const dislikingVideo = (toast,id) => (dispatch) => {
     let ids = id || getFromLocalStorage("del_id")
     dispatch(addDisLikedVideoRequest());
     axios
-      .delete(`https://youtube-by-navneet-server.herokuapp.com/favourite/${ids}`)
+      .delete(`https://backy-dao7.onrender.com/favourite/${ids}`)
       .then(({ data }) => {
         const { status, message, description } = data;
         dispatch(addDisLikedVideoSuccess());

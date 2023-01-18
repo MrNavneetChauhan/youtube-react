@@ -73,7 +73,7 @@ export const gettingSavedVideos = () => (dispatch) => {
     dispatch(getSavedVideoRequest());
     axios
       .get(
-        `https://youtube-by-navneet-server.herokuapp.com/saved?user_id=${user_id}`
+        `https://backy-dao7.onrender.com/saved?user_id=${user_id}`
       )
       .then(({ data }) => {
         dispatch(getSavedVideoSuccess(data.save));
@@ -96,7 +96,7 @@ export const postingSavedVideos = (toast, payload) => (dispatch) => {
     dispatch(postSavedVideoRequest());
     axios
       .post(
-        `https://youtube-by-navneet-server.herokuapp.com/saved?user_id=${user_id}&video_id=${video_id}`,
+        `https://backy-dao7.onrender.com/saved?user_id=${user_id}&video_id=${video_id}`,
         payload
       )
       .then(({ data }) => {
@@ -132,7 +132,7 @@ export const removingVideo = (toast,id) => (dispatch) => {
     dispatch(delSaveVideoRequest());
     axios
       .delete(
-        `https://youtube-by-navneet-server.herokuapp.com/saved/${id}`
+        `https://backy-dao7.onrender.com/saved/${id}`
       )
       .then(({ data }) => {
         const { status, message, description } = data;

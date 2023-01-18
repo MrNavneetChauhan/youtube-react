@@ -49,7 +49,7 @@ export const posttingComment = (toast, payload) => (dispatch) => {
     console.log("comment is here", payload);
     dispatch(commentPostRequest());
     axios
-      .post("https://youtube-by-navneet-server.herokuapp.com/comments", payload)
+      .post("https://backy-dao7.onrender.com/comments", payload)
       .then((res) => {
         dispatch(commentPostSuccess());
         notification(
@@ -96,7 +96,7 @@ export const gettingComments = () => (dispatch) => {
     dispatch(commentGetRequest());
     axios
       .get(
-        `https://youtube-by-navneet-server.herokuapp.com/comments?videoId=${video_id}`
+        `https://backy-dao7.onrender.com/comments?videoId=${video_id}`
       )
       .then(({ data }) => {
         dispatch(commentGetSuccess(data.comments));
